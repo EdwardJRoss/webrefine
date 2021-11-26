@@ -7,13 +7,13 @@ from __future__ import annotations
 __all__ = ['get_warc_metadata', 'QueryWARC']
 
 # Cell
-import warcio
-
 #nbdev_comment from __future__ import annotations
 from typing import Union
 from pathlib import Path
-from warcio.recordloader import ArcWarcRecord
 from collections.abc import Iterable
+
+from warcio.recordloader import ArcWarcRecord
+import warcio
 
 # Cell
 
