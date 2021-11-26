@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: CDX
       url: cdx.html
+    - output: web,pdf
+      title: WARC - Querying WARC Records
+      url: warc.html
     output: web
     title: webrefine
   output: web

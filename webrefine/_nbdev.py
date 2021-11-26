@@ -17,9 +17,12 @@ index = {"header_and_rows_to_dict": "01_cdx.ipynb",
          "query_cc_cdx_page": "01_cdx.ipynb",
          "fetch_cc": "01_cdx.ipynb",
          "CC_DATA_URL": "01_cdx.ipynb",
-         "CommonCrawl": "01_cdx.ipynb"}
+         "CommonCrawl": "01_cdx.ipynb",
+         "get_warc_metadata": "02_warc.ipynb",
+         "QueryWARC": "02_warc.ipynb"}
 
-modules = ["cdx.py"]
+modules = ["cdx.py",
+           "warc.py"]
 
 doc_url = "https://EdwardJRoss.github.io/webrefine/"
 

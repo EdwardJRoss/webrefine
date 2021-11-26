@@ -2,6 +2,7 @@
   "webrefine": {
     "Overview": "/",
     "webrefine": "core.html",
-    "CDX": "cdx.html"
+    "CDX": "cdx.html",
+    "WARC - Querying WARC Records": "warc.html"
   }
 }
