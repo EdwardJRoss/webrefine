@@ -8,7 +8,7 @@ __all__ = ['WarcFileRecord', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimety
            'IA_CDX_URL', 'CaptureIndexRecord', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery', 'make_session',
            'wayback_fetch_parallel', 'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads',
            'CC_PAGE_SIZE', 'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc',
-           'CC_DATA_URL', 'CommonCrawlRecord', 'CommonCrawlQuery']
+           'CC_DATA_URL', 'get_digest', 'CommonCrawlRecord', 'CommonCrawlQuery']
 
 # Cell
 # Typing
@@ -397,8 +397,15 @@ def fetch_cc(filename: str, offset: int, length: int, session: Optional[Session]
     return content
 
 # Cell
-_CC_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
+from hashlib import sha1
+from base64 import b32encode
 
+def get_digest(content: bytes) -> str:
+    return b32encode(sha1(content).digest()).decode('ascii')
+
+# Cell
+_CC_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
+from IPython.display import FileLink
 
 @dataclass(frozen=True)
 class CommonCrawlRecord:
@@ -410,6 +417,22 @@ class CommonCrawlRecord:
     mime: Optional[str]
     status: Optional[int]
     cache_location: Optional[Union[str, Path]] = None
+
+    def preview(self, directory=None, filename=None):
+        if directory is None:
+            if self.cache_location is None:
+                raise ValueError("directory or cache_location must be set")
+            directory = self.cache_location
+        directory = Path(directory)
+
+        if filename is None:
+            filename = get_digest(self.content) + '.html'
+        path = directory / filename
+        with open(path, 'wb') as f:
+            f.write(self.content)
+        return FileLink(path)
+
+
 
     @property
     def timestamp_str(self) -> str:

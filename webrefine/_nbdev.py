@@ -24,6 +24,7 @@ index = {"WarcFileRecord": "01_query.ipynb",
          "CC_API_FILTER_BLACKLIST": "01_query.ipynb",
          "fetch_cc": "01_query.ipynb",
          "CC_DATA_URL": "01_query.ipynb",
+         "get_digest": "01_query.ipynb",
          "CommonCrawlRecord": "01_query.ipynb",
          "CommonCrawlQuery": "01_query.ipynb"}
 

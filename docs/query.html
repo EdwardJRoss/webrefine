@@ -3063,17 +3063,42 @@ Wall time: 1.17 s
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_digest" class="doc_header"><code>get_digest</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L403" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_digest</code>(<strong><code>content</code></strong>:<code>bytes</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b32encode</span>
-
-<span class="k">def</span> <span class="nf">get_digest</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">b32encode</span><span class="p">(</span><span class="n">sha1</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
-
-<span class="k">assert</span> <span class="n">get_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">get_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -3100,7 +3125,7 @@ Wall time: 1.17 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L403" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
+<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L410" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>CommonCrawlRecord(url: 'str', timestamp: 'datetime', filename: 'str', offset: 'int', length: 'int', mime: 'Optional[str]', status: 'Optional[int]', cache_location: 'Optional[Union[str, Path]]' = None)</p>
 
@@ -3232,14 +3257,57 @@ Wall time: 1.17 s
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>TODO: Decompose this into smaller testable functions</p>
-<p>TODO: Start end - datetime or str...</p>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
+<span class="n">path</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<a href='../data/test/cache/TFZFWXWKS3NFJLLLXLYU6JTNZ77D3IVD.html' target='_blank'>../data/test/cache/TFZFWXWKS3NFJLLLXLYU6JTNZ77D3IVD.html</a><br>
+</div>
+
+</div>
 
 </div>
 </div>
+
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note that filters aren't strict...</p>
@@ -3258,7 +3326,7 @@ Wall time: 1.17 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L455" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
+<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L478" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
 </blockquote>
 <p>CommonCrawlQuery(url: 'str', start: 'Optional[str]' = None, end: 'Optional[str]' = None, apis: 'Optional[list[str]]' = None, status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None, cache_location: 'Optional[str]' = None, cache_verbose: 'int' = 0)</p>
 
