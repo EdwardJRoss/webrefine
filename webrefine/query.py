@@ -7,13 +7,13 @@ from __future__ import annotations # For Python <3.9
 __all__ = ['WarcFileRecord', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimetypes_to_regex', 'query_wayback_cdx',
            'IA_CDX_URL', 'CaptureIndexRecord', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery', 'make_session',
            'wayback_fetch_parallel', 'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads',
-           'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc', 'CC_DATA_URL',
-           'CommonCrawlRecord', 'CommonCrawlQuery']
+           'CC_PAGE_SIZE', 'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc',
+           'CC_DATA_URL', 'CommonCrawlRecord', 'CommonCrawlQuery']
 
 # Cell
 # Typing
 #nbdev_comment from __future__ import annotations # For Python <3.9
-from typing import Any, Optional, Union
+from typing import Any, Generator, Optional, Union
 from collections.abc import Iterable
 from pathlib import Path
 from dataclasses import dataclass
@@ -57,7 +57,7 @@ class WarcFileQuery:
     def __init__(self, path: Union[str, Path]) -> None:
         self.path = Path(path)
 
-    def query(self) -> list[WarcRecord]:
+    def query(self) -> Generator[WarcRecord, None, None]:
         results = []
         with open(self.path, 'rb') as f:
             archive = warcio.ArchiveIterator(f)
@@ -223,10 +223,10 @@ class WaybackQuery:
     def query(self,
               limit: Optional[int] = None,
               session: Optional[Session] = None,
-              force: bool=False) -> list[WaybackRecord]:
+              force: bool=False) -> Generator[WaybackRecord, None, None]:
         query = _forced(self._query, force)
-        result = query(self.url, self.start, self.end, self.status_ok, self.mime, limit, session=session)
-        return [_wayback_cdx_to_record(r, self.cache_location) for r in result]
+        for r in query(self.url, self.start, self.end, self.status_ok, self.mime, limit, session=session):
+            yield _wayback_cdx_to_record(r, self.cache_location)
 
 # Cell
 from requests.adapters import HTTPAdapter
@@ -297,12 +297,20 @@ def jsonl_loads(jsonl):
     return [json.loads(line) for line in jsonl.splitlines()]
 
 # Cell
-def query_cc_cdx_num_pages(api: str,  url: str,
+
+# This makes it much faster for small queries (default is 5)
+CC_PAGE_SIZE = 1
+
+# Cell
+
+def query_cc_cdx_num_pages(api: str,  url: str, page_size: int = CC_PAGE_SIZE,
                            session: Optional[Session] = None) -> int:
     if session is None:
         session = requests
 
-    response = session.get(api, params={'url': url, 'output': 'json', 'showNumPages': True})
+    response = session.get(api, params=dict(url=url, output='json',
+                                            showNumPages=True, pageSize=page_size))
+
     response.raise_for_status()
     data = response.json()
     return data["pages"]
@@ -312,6 +320,7 @@ def query_cc_cdx_page(
                  start: Optional[str] = None, end: Optional[str] = None,
                  status_ok: bool = True, mime: Optional[Union[str, Iterable[str]]] = None,
                  limit: Optional[int] = None, offset: Optional[int] = None,
+                 page_size: int = CC_PAGE_SIZE,
                  session: Optional[Session] = None) -> List[CaptureIndexRecord]:
     """Get references to Common Crawl Captures for url.
 
@@ -338,6 +347,7 @@ def query_cc_cdx_page(
               'page': page,
               'from': start,
               'to': end,
+              'pageSize': page_size,
               'limit': limit,
               'offset': offset}
 
@@ -458,8 +468,6 @@ class CommonCrawlQuery:
         self._query_pages = self.memory.cache(query_cc_cdx_num_pages, ignore=['session'])
         self._query = self.memory.cache(query_cc_cdx_page, ignore=['session'])
 
-
-
     @property
     def cdx_apis(self) -> Dict[str, str]:
         all_apis = get_cc_indexes()
@@ -470,25 +478,20 @@ class CommonCrawlQuery:
 
         return {x['id']: x['cdx-api'] for x in all_apis if x['id'] in apis}
 
-    def query(self, limit: Optional[int] = None, force=False, session=None) -> List[CaptureIndexRecord]:
+    def query(self, page_size=CC_PAGE_SIZE, force=False, session=None) -> Generator[CommonCrawlRecord, None, None]:
         query = _forced(self._query, force)
         query_pages = _forced(self._query_pages, force)
 
-        results = []
         for api_id, api in self.cdx_apis.items():
 
-            num_pages = query_pages(api, self.url, session=session)
+            num_pages = query_pages(api, self.url, page_size=page_size, session=session)
 
             for page in range(num_pages):
                 if api_id not in CC_API_FILTER_BLACKLIST:
-                    results_page = query(api, self.url, page, status_ok=self.status_ok, mime=self.mime)
+                    results_page = query(api, self.url, page, page_size=page_size, status_ok=self.status_ok, mime=self.mime)
                 else:
                     # Deal with missing Status OK and Mime
-                    results_page = query(api, self.url, page, status_ok=False)
+                    results_page = query(api, self.url, page, page_size=page_size, status_ok=False)
 
-                results += results_page
-
-            if limit and len(results) > limit:
-                break
-
-        return [_cc_cdx_to_record(r, self.cache_location) for r in results]
+                for result in results_page:
+                    yield _cc_cdx_to_record(result, self.cache_location)

@@ -2,6 +2,7 @@
   "webrefine": {
     "Overview": "/",
     "webrefine": "core.html",
-    "Query": "query.html"
+    "Query": "query.html",
+    "Title": "engine.html"
   }
 }
