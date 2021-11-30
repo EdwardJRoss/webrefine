@@ -488,10 +488,10 @@ class CommonCrawlQuery:
 
             for page in range(num_pages):
                 if api_id not in CC_API_FILTER_BLACKLIST:
-                    results_page = query(api, self.url, page, page_size=page_size, status_ok=self.status_ok, mime=self.mime)
+                    results_page = query(api, self.url, page, page_size=page_size, status_ok=self.status_ok, mime=self.mime, session=session)
                 else:
                     # Deal with missing Status OK and Mime
-                    results_page = query(api, self.url, page, page_size=page_size, status_ok=False)
+                    results_page = query(api, self.url, page, page_size=page_size, status_ok=False, session=session)
 
                 for result in results_page:
                     yield _cc_cdx_to_record(result, self.cache_location)
