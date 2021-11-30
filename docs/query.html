@@ -85,9 +85,9 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WarcFileRecord" class="doc_header"><code>class</code> <code>WarcFileRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L35" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>int</code>, <strong><code>path</code></strong>:<code>Path</code>, <strong><code>offset</code></strong>:<code>int</code>)</p>
+<h2 id="WarcFileRecord" class="doc_header"><code>class</code> <code>WarcFileRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L37" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>int</code>, <strong><code>path</code></strong>:<code>Path</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>digest</code></strong>:<code>str</code>)</p>
 </blockquote>
-<p>WarcFileRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'int', path: 'Path', offset: 'int')</p>
+<p>WarcFileRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'int', path: 'Path', offset: 'int', digest: 'str')</p>
 
 </div>
 
@@ -110,7 +110,127 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WarcFileQuery" class="doc_header"><code>class</code> <code>WarcFileQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L56" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileQuery</code>(<strong><code>path</code></strong>:<code>Union[str, Path]</code>)</p>
+<h4 id="get_warc_url" class="doc_header"><code>get_warc_url</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_url</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_warc_timestamp" class="doc_header"><code>get_warc_timestamp</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_timestamp</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_warc_mime" class="doc_header"><code>get_warc_mime</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_mime</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_warc_status" class="doc_header"><code>get_warc_status</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_status</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_warc_digest" class="doc_header"><code>get_warc_digest</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_digest</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="WarcFileQuery" class="doc_header"><code>class</code> <code>WarcFileQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L77" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileQuery</code>(<strong><code>path</code></strong>:<code>Union[str, Path]</code>)</p>
 </blockquote>
 
 </div>
@@ -187,19 +307,19 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[WarcFileRecord(url=&#39;https://skeptric.com/pagination-wayback-cdx/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 34), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=889),
- WarcFileRecord(url=&#39;https://skeptric.com/robots.txt&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 34), mime=&#39;text/html&#39;, status=&#39;404&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=5804),
- WarcFileRecord(url=&#39;https://skeptric.com/style.main.min.5ea2f07be7e07e221a7112a3095b89d049b96c48b831f16f1015bf2d95d914e5.css&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 35), mime=&#39;text/css&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=7197),
- WarcFileRecord(url=&#39;https://skeptric.com/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 36), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=17122),
- WarcFileRecord(url=&#39;https://skeptric.com/about/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 37), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=125261),
- WarcFileRecord(url=&#39;https://skeptric.com/tags/data&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 37), mime=&#39;text/html&#39;, status=&#39;302&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=129093),
- WarcFileRecord(url=&#39;https://skeptric.com/tags/data/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=130269),
- WarcFileRecord(url=&#39;https://skeptric.com/images/wayback_empty_returns.png&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;image/png&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=160971),
- WarcFileRecord(url=&#39;https://skeptric.com/searching-100b-pages-cdx&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;302&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=173368),
- WarcFileRecord(url=&#39;https://skeptric.com/searching-100b-pages-cdx/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=174558),
- WarcFileRecord(url=&#39;https://skeptric.com/fast-web-data-workflow/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=188608),
- WarcFileRecord(url=&#39;https://skeptric.com/key-web-captures/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 40), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=195651),
- WarcFileRecord(url=&#39;https://skeptric.com/emacs-tempfile-hugo/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 40), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=201243)]</pre>
+<pre>[WarcFileRecord(url=&#39;https://skeptric.com/pagination-wayback-cdx/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 34), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=889, digest=&#39;Q6HKH563Z7HF2333QILSSSHY2K3B6NOK&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/robots.txt&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 34), mime=&#39;text/html&#39;, status=&#39;404&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=5804, digest=&#39;QRNGXIUXE4LAI3XR5RVATIUX5GTB33HX&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/style.main.min.5ea2f07be7e07e221a7112a3095b89d049b96c48b831f16f1015bf2d95d914e5.css&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 35), mime=&#39;text/css&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=7197, digest=&#39;LINCDTSPQGAQGZZ6LY2XFXZHG2X476H6&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 36), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=17122, digest=&#39;JJVB3MQERHRZJCHOJNKS5VDOODXPZAV2&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/about/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 37), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=125261, digest=&#39;Z5NRUTRW3XTKZDCJFDKGPJ5BWIBNQCG7&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/tags/data&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 37), mime=&#39;text/html&#39;, status=&#39;302&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=129093, digest=&#39;ZZZXDZTTV2KTABRO64ESHVWFPNKB4I5H&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/tags/data/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=130269, digest=&#39;R7CLAACFU5L7T5LKI5G53RZSMCNUNV6F&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/images/wayback_empty_returns.png&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;image/png&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=160971, digest=&#39;SU7JRTHNW6KFCJQFL5PMMKV33U2VLV7T&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/searching-100b-pages-cdx&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;302&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=173368, digest=&#39;AYVHQLVFIVGZGUYPEHX46CHMZ5NUDDBF&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/searching-100b-pages-cdx/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=174558, digest=&#39;CMT3ZNELTRC7H7ICVCGAYYS6GQ2NSZGP&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/fast-web-data-workflow/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 39), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=188608, digest=&#39;UMQCERJOQ3AGE3Z576ABKKKNDGSNBQAX&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/key-web-captures/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 40), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=195651, digest=&#39;5GLUI5DL5PFUM6QY53NWUCMJBC2CTXKS&#39;),
+ WarcFileRecord(url=&#39;https://skeptric.com/emacs-tempfile-hugo/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 40), mime=&#39;text/html&#39;, status=&#39;200&#39;, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=201243, digest=&#39;JY2UE6SKCYPHXSUN5IR6SQVMZRRAGU64&#39;)]</pre>
 </div>
 
 </div>
@@ -258,7 +378,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fetching all records</p>
+<p>Check the digests</p>
 
 </div>
 </div>
@@ -270,27 +390,11 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">contents</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">content</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">digest</span> <span class="o">==</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>13</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -342,7 +446,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="header_and_rows_to_dict" class="doc_header"><code>header_and_rows_to_dict</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>header_and_rows_to_dict</code>(<strong><code>rows</code></strong>:<code>Iterable[list[Any]]</code>)</p>
+<h4 id="header_and_rows_to_dict" class="doc_header"><code>header_and_rows_to_dict</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L101" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>header_and_rows_to_dict</code>(<strong><code>rows</code></strong>:<code>Iterable[list[Any]]</code>)</p>
 </blockquote>
 
 </div>
@@ -439,7 +543,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mimetypes_to_regex" class="doc_header"><code>mimetypes_to_regex</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L96" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mimetypes_to_regex</code>(<strong><code>mime</code></strong>:<code>list[str]</code>, <strong><code>prefix</code></strong>=<em><code>'mimetype:'</code></em>)</p>
+<h4 id="mimetypes_to_regex" class="doc_header"><code>mimetypes_to_regex</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L118" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mimetypes_to_regex</code>(<strong><code>mime</code></strong>:<code>list[str]</code>, <strong><code>prefix</code></strong>=<em><code>'mimetype:'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -463,7 +567,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_wayback_cdx" class="doc_header"><code>query_wayback_cdx</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L99" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_wayback_cdx</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_wayback_cdx" class="doc_header"><code>query_wayback_cdx</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L121" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_wayback_cdx</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Get references to Wayback Machine Captures for url.</p>
 <p>Queries the Internet Archive Capture Index (CDX) for url.</p>
@@ -524,8 +628,8 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 21.2 ms, sys: 2.59 ms, total: 23.8 ms
-Wall time: 881 ms
+<pre>CPU times: user 18.5 ms, sys: 8.02 ms, total: 26.6 ms
+Wall time: 887 ms
 </pre>
 </div>
 </div>
@@ -730,8 +834,8 @@ Wall time: 881 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 11.6 ms, sys: 2.83 ms, total: 14.5 ms
-Wall time: 737 ms
+<pre>CPU times: user 12.1 ms, sys: 1.29 ms, total: 13.4 ms
+Wall time: 672 ms
 </pre>
 </div>
 </div>
@@ -786,8 +890,8 @@ Wall time: 737 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 9.97 ms, sys: 61 µs, total: 10 ms
-Wall time: 770 ms
+<pre>CPU times: user 10.8 ms, sys: 970 µs, total: 11.8 ms
+Wall time: 630 ms
 </pre>
 </div>
 </div>
@@ -836,8 +940,8 @@ Wall time: 770 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 9.09 ms, sys: 721 µs, total: 9.81 ms
-Wall time: 691 ms
+<pre>CPU times: user 8.59 ms, sys: 439 µs, total: 9.03 ms
+Wall time: 679 ms
 </pre>
 </div>
 </div>
@@ -887,8 +991,8 @@ Wall time: 691 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 4.29 ms, sys: 2.63 ms, total: 6.92 ms
-Wall time: 420 ms
+<pre>CPU times: user 10.5 ms, sys: 98 µs, total: 10.6 ms
+Wall time: 451 ms
 </pre>
 </div>
 </div>
@@ -944,8 +1048,8 @@ Wall time: 420 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 6.8 ms, sys: 1.01 ms, total: 7.81 ms
-Wall time: 461 ms
+<pre>CPU times: user 11 ms, sys: 222 µs, total: 11.3 ms
+Wall time: 482 ms
 </pre>
 </div>
 </div>
@@ -1004,8 +1108,8 @@ Wall time: 461 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 7.62 ms, sys: 262 µs, total: 7.88 ms
-Wall time: 446 ms
+<pre>CPU times: user 10.5 ms, sys: 112 µs, total: 10.6 ms
+Wall time: 501 ms
 </pre>
 </div>
 </div>
@@ -1054,8 +1158,8 @@ Wall time: 446 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 15.6 ms, sys: 0 ns, total: 15.6 ms
-Wall time: 857 ms
+<pre>CPU times: user 10.5 ms, sys: 3.2 ms, total: 13.7 ms
+Wall time: 803 ms
 </pre>
 </div>
 </div>
@@ -1110,8 +1214,8 @@ Wall time: 857 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 7.08 ms, sys: 0 ns, total: 7.08 ms
-Wall time: 455 ms
+<pre>CPU times: user 7.91 ms, sys: 274 µs, total: 8.18 ms
+Wall time: 515 ms
 </pre>
 </div>
 </div>
@@ -1176,8 +1280,8 @@ Wall time: 455 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 6.64 ms, sys: 1.03 ms, total: 7.66 ms
-Wall time: 447 ms
+<pre>CPU times: user 7.61 ms, sys: 0 ns, total: 7.61 ms
+Wall time: 440 ms
 </pre>
 </div>
 </div>
@@ -1222,7 +1326,7 @@ Wall time: 447 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="fetch_wayback_content" class="doc_header"><code>fetch_wayback_content</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L145" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_wayback_content</code>(<strong><code>timestamp</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="fetch_wayback_content" class="doc_header"><code>fetch_wayback_content</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_wayback_content</code>(<strong><code>timestamp</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1475,7 +1579,7 @@ Wall time: 447 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WaybackRecord" class="doc_header"><code>class</code> <code>WaybackRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L160" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
+<h2 id="WaybackRecord" class="doc_header"><code>class</code> <code>WaybackRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L182" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>WaybackRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'Optional[int]', cache_location: 'Optional[Union[str, Path]]' = None)</p>
 
@@ -1551,8 +1655,8 @@ Wall time: 447 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 9.41 ms, sys: 7.28 ms, total: 16.7 ms
-Wall time: 368 ms
+<pre>CPU times: user 14 ms, sys: 2.75 ms, total: 16.7 ms
+Wall time: 376 ms
 </pre>
 </div>
 </div>
@@ -1601,8 +1705,8 @@ Wall time: 368 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 269 µs, sys: 2.5 ms, total: 2.77 ms
-Wall time: 2.66 ms
+<pre>CPU times: user 3.45 ms, sys: 0 ns, total: 3.45 ms
+Wall time: 2.44 ms
 </pre>
 </div>
 </div>
@@ -1634,7 +1738,7 @@ Wall time: 2.66 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WaybackQuery" class="doc_header"><code>class</code> <code>WaybackQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L209" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
+<h2 id="WaybackQuery" class="doc_header"><code>class</code> <code>WaybackQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L231" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
 </blockquote>
 <p>WaybackQuery(url: 'str', start: 'Optional[str]', end: 'Optional[str]', status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None, cache_location: 'Optional[str]' = None, cache_verbose: 'int' = 0)</p>
 
@@ -1734,8 +1838,8 @@ Wall time: 2.66 ms
 [Memory] Calling __main__--tmp-ipykernel-2773891608.query_wayback_cdx...
 query_wayback_cdx(&#39;skeptric.com/*&#39;, None, None, True, None, None, session=None)
 ________________________________________________query_wayback_cdx - 0.8s, 0.0min
-CPU times: user 155 ms, sys: 10.1 ms, total: 165 ms
-Wall time: 836 ms
+CPU times: user 148 ms, sys: 8.82 ms, total: 156 ms
+Wall time: 800 ms
 </pre>
 </div>
 </div>
@@ -1767,8 +1871,8 @@ Wall time: 836 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 64.5 ms, sys: 84 µs, total: 64.5 ms
-Wall time: 64.2 ms
+<pre>CPU times: user 82.4 ms, sys: 3.37 ms, total: 85.7 ms
+Wall time: 85.5 ms
 </pre>
 </div>
 </div>
@@ -1821,8 +1925,8 @@ Wall time: 64.2 ms
 [Memory] Calling __main__--tmp-ipykernel-2773891608.query_wayback_cdx...
 query_wayback_cdx(&#39;skeptric.com/*&#39;, None, None, True, None, None, session=None)
 ________________________________________________query_wayback_cdx - 0.8s, 0.0min
-CPU times: user 115 ms, sys: 2.03 ms, total: 117 ms
-Wall time: 785 ms
+CPU times: user 132 ms, sys: 6.68 ms, total: 138 ms
+Wall time: 782 ms
 </pre>
 </div>
 </div>
@@ -1871,8 +1975,8 @@ Wall time: 785 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 11 ms, sys: 224 µs, total: 11.2 ms
-Wall time: 362 ms
+<pre>CPU times: user 6.94 ms, sys: 6.08 ms, total: 13 ms
+Wall time: 364 ms
 </pre>
 </div>
 </div>
@@ -1904,8 +2008,8 @@ Wall time: 362 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 976 µs, sys: 2.75 ms, total: 3.73 ms
-Wall time: 3.17 ms
+<pre>CPU times: user 2.79 ms, sys: 553 µs, total: 3.34 ms
+Wall time: 4.54 ms
 </pre>
 </div>
 </div>
@@ -2007,7 +2111,7 @@ Using a Session makes things slightly faster; we can always turn it off by passi
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="make_session" class="doc_header"><code>make_session</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L235" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_session</code>(<strong><code>pool_maxsize</code></strong>)</p>
+<h4 id="make_session" class="doc_header"><code>make_session</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L257" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_session</code>(<strong><code>pool_maxsize</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -2031,7 +2135,7 @@ Using a Session makes things slightly faster; we can always turn it off by passi
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="wayback_fetch_parallel" class="doc_header"><code>wayback_fetch_parallel</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L243" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>wayback_fetch_parallel</code>(<strong><code>items</code></strong>, <strong><code>threads</code></strong>=<em><code>8</code></em>, <strong><code>session</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="wayback_fetch_parallel" class="doc_header"><code>wayback_fetch_parallel</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L265" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>wayback_fetch_parallel</code>(<strong><code>items</code></strong>, <strong><code>threads</code></strong>=<em><code>8</code></em>, <strong><code>session</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2072,8 +2176,8 @@ Using a Session makes things slightly faster; we can always turn it off by passi
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 182 ms, sys: 42.1 ms, total: 224 ms
-Wall time: 3.2 s
+<pre>CPU times: user 239 ms, sys: 97.9 ms, total: 337 ms
+Wall time: 3.51 s
 </pre>
 </div>
 </div>
@@ -2138,7 +2242,7 @@ Wall time: 3.2 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_cc_indexes" class="doc_header"><code>get_cc_indexes</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L250" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cc_indexes</code>()</p>
+<h4 id="get_cc_indexes" class="doc_header"><code>get_cc_indexes</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L272" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cc_indexes</code>()</p>
 </blockquote>
 
 </div>
@@ -2277,7 +2381,7 @@ Wall time: 3.2 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="parse_cc_crawl_date" class="doc_header"><code>parse_cc_crawl_date</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L258" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_cc_crawl_date</code>(<strong><code>crawl_id</code></strong>:<code>str</code>)</p>
+<h4 id="parse_cc_crawl_date" class="doc_header"><code>parse_cc_crawl_date</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L280" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_cc_crawl_date</code>(<strong><code>crawl_id</code></strong>:<code>str</code>)</p>
 </blockquote>
 
 </div>
@@ -2325,7 +2429,7 @@ Wall time: 3.2 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cc_index_by_time" class="doc_header"><code>cc_index_by_time</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L269" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cc_index_by_time</code>(<strong><code>start</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>indexes</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>)</p>
+<h4 id="cc_index_by_time" class="doc_header"><code>cc_index_by_time</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L291" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cc_index_by_time</code>(<strong><code>start</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>indexes</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Gets all indexes that may contain entries between start and end</p>
 <p>Generally errs on the side of giving an additional index</p>
@@ -2511,7 +2615,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="jsonl_loads" class="doc_header"><code>jsonl_loads</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L296" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_loads</code>(<strong><code>jsonl</code></strong>)</p>
+<h4 id="jsonl_loads" class="doc_header"><code>jsonl_loads</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L318" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_loads</code>(<strong><code>jsonl</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -2569,7 +2673,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_cc_cdx_num_pages" class="doc_header"><code>query_cc_cdx_num_pages</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L306" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_num_pages</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_cc_cdx_num_pages" class="doc_header"><code>query_cc_cdx_num_pages</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L328" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_num_pages</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2593,7 +2697,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_cc_cdx_page" class="doc_header"><code>query_cc_cdx_page</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L318" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_page</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page</code></strong>:<code>int</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_cc_cdx_page" class="doc_header"><code>query_cc_cdx_page</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L340" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_page</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page</code></strong>:<code>int</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Get references to Common Crawl Captures for url.</p>
 <p>Queries the Common Crawl Capture Index (CDX) for url.</p>
@@ -2894,7 +2998,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="fetch_cc" class="doc_header"><code>fetch_cc</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L378" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_cc</code>(<strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="fetch_cc" class="doc_header"><code>fetch_cc</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L400" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_cc</code>(<strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -3008,8 +3112,8 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 29.2 ms, sys: 2.37 ms, total: 31.5 ms
-Wall time: 1.17 s
+<pre>CPU times: user 22.9 ms, sys: 3.94 ms, total: 26.9 ms
+Wall time: 1.07 s
 </pre>
 </div>
 </div>
@@ -3063,42 +3167,11 @@ Wall time: 1.17 s
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_digest" class="doc_header"><code>get_digest</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L403" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_digest</code>(<strong><code>content</code></strong>:<code>bytes</code>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">get_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -3125,7 +3198,7 @@ Wall time: 1.17 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L410" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
+<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L425" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>CommonCrawlRecord(url: 'str', timestamp: 'datetime', filename: 'str', offset: 'int', length: 'int', mime: 'Optional[str]', status: 'Optional[int]', cache_location: 'Optional[Union[str, Path]]' = None)</p>
 
@@ -3326,7 +3399,7 @@ Wall time: 1.17 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L478" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
+<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L493" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
 </blockquote>
 <p>CommonCrawlQuery(url: 'str', start: 'Optional[str]' = None, end: 'Optional[str]' = None, apis: 'Optional[list[str]]' = None, status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None, cache_location: 'Optional[str]' = None, cache_verbose: 'int' = 0)</p>
 
@@ -3426,8 +3499,8 @@ Wall time: 1.17 s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 9.73 ms, sys: 0 ns, total: 9.73 ms
-Wall time: 10.3 ms
+<pre>CPU times: user 5.56 ms, sys: 0 ns, total: 5.56 ms
+Wall time: 5.3 ms
 </pre>
 </div>
 </div>
@@ -3480,19 +3553,19 @@ Wall time: 10.3 ms
 <pre>________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
 query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2015-11-index&#39;, &#39;www.commoncrawl.org/*&#39;, page_size=1, session=None)
-___________________________________________query_cc_cdx_num_pages - 4.2s, 0.1min
+___________________________________________query_cc_cdx_num_pages - 0.9s, 0.0min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-11-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False)
-________________________________________________query_cc_cdx_page - 1.0s, 0.0min
+query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-11-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False, session=None)
+_______________________________________________query_cc_cdx_page - 10.9s, 0.2min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
 query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2015-06-index&#39;, &#39;www.commoncrawl.org/*&#39;, page_size=1, session=None)
-___________________________________________query_cc_cdx_num_pages - 1.0s, 0.0min
+___________________________________________query_cc_cdx_num_pages - 2.6s, 0.0min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-06-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False)
-________________________________________________query_cc_cdx_page - 8.0s, 0.1min
+query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-06-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False, session=None)
+________________________________________________query_cc_cdx_page - 1.9s, 0.0min
 </pre>
 </div>
 </div>
@@ -3643,8 +3716,8 @@ query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&
 ___________________________________________query_cc_cdx_num_pages - 0.7s, 0.0min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None)
-________________________________________________query_cc_cdx_page - 2.6s, 0.0min
+query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None, session=None)
+_______________________________________________query_cc_cdx_page - 10.5s, 0.2min
 </pre>
 </div>
 </div>
@@ -3703,11 +3776,11 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 <pre>________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
 query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, page_size=4, session=None)
-___________________________________________query_cc_cdx_num_pages - 0.8s, 0.0min
+___________________________________________query_cc_cdx_num_pages - 3.6s, 0.1min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=4, status_ok=False, mime=None)
-________________________________________________query_cc_cdx_page - 3.0s, 0.1min
+query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=4, status_ok=False, mime=None, session=None)
+________________________________________________query_cc_cdx_page - 2.9s, 0.0min
 </pre>
 </div>
 </div>
@@ -3743,11 +3816,11 @@ ________________________________________________query_cc_cdx_page - 3.0s, 0.1min
 <pre>________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
 query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, page_size=5, session=None)
-___________________________________________query_cc_cdx_num_pages - 0.7s, 0.0min
+___________________________________________query_cc_cdx_num_pages - 0.8s, 0.0min
 ________________________________________________________________________________
 [Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None)
-________________________________________________query_cc_cdx_page - 1.8s, 0.0min
+query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None, session=None)
+________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 </pre>
 </div>
 </div>
@@ -3910,7 +3983,7 @@ ________________________________________________query_cc_cdx_page - 1.8s, 0.0min
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">get_digest</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;7RBLUZ55MD4FUPDRPVVJVTM7YDYQXRS3&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;7RBLUZ55MD4FUPDRPVVJVTM7YDYQXRS3&#39;</span>
 </pre></div>
 
     </div>

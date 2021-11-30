@@ -4,11 +4,12 @@
 from __future__ import annotations # For Python <3.9
 
 
-__all__ = ['WarcFileRecord', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimetypes_to_regex', 'query_wayback_cdx',
+__all__ = ['WarcFileRecord', 'get_warc_url', 'get_warc_timestamp', 'get_warc_mime', 'get_warc_status',
+           'get_warc_digest', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimetypes_to_regex', 'query_wayback_cdx',
            'IA_CDX_URL', 'CaptureIndexRecord', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery', 'make_session',
            'wayback_fetch_parallel', 'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads',
            'CC_PAGE_SIZE', 'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc',
-           'CC_DATA_URL', 'get_digest', 'CommonCrawlRecord', 'CommonCrawlQuery']
+           'CC_DATA_URL', 'CommonCrawlRecord', 'CommonCrawlQuery']
 
 # Cell
 # Typing
@@ -24,11 +25,12 @@ import requests
 from requests.sessions import Session
 import json
 
-from joblib import Memory, delayed, Parallel
-
-
 from warcio.recordloader import ArcWarcRecord
 import warcio
+
+from .util import sha1_digest
+
+from joblib import Memory, delayed, Parallel
 
 # Cell
 
@@ -40,6 +42,7 @@ class WarcFileRecord:
     status: int
     path: Path
     offset: int
+    digest: str
 
     def get_content(self):
         with open(self.path, 'rb') as f:
@@ -51,8 +54,26 @@ class WarcFileRecord:
     def content(self):
         return self.get_content()
 
+def get_warc_url(record: ArcWarcRecord) -> str:
+    return record.rec_headers.get_header('WARC-Target-URI')
 
 _WARC_TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
+def get_warc_timestamp(record: ArcWarcRecord) -> datetime:
+    return datetime.strptime(record.rec_headers.get_header('WARC-Date'), _WARC_TIMESTAMP_FORMAT)
+
+def get_warc_mime(record: ArcWarcRecord) -> str:
+    return record.http_headers.get_header('Content-Type').split(';')[0]
+
+def get_warc_status(record: ArcWarcRecord) -> int:
+    return record.http_headers.get_statuscode()
+
+def get_warc_digest(record: ArcWarcRecord) -> str:
+    digest = record.rec_headers.get_header('WARC-Payload-Digest')
+    prefix = 'sha1:'
+    if not digest.startswith(prefix):
+        raise ValueError('Expected %s to start with %s', digest, prefix)
+    return digest[len(prefix):]
+
 class WarcFileQuery:
     def __init__(self, path: Union[str, Path]) -> None:
         self.path = Path(path)
@@ -64,10 +85,11 @@ class WarcFileQuery:
             for record in archive:
                 if record.rec_type != 'response':
                     continue
-                warc_record = WarcFileRecord(url=record.rec_headers.get_header('WARC-Target-URI'),
-                                         timestamp=datetime.strptime(record.rec_headers.get_header('WARC-Date'), _WARC_TIMESTAMP_FORMAT),
-                                         mime = record.http_headers.get_header('Content-Type').split(';')[0],
-                                         status = record.http_headers.get_statuscode(),
+                warc_record = WarcFileRecord(url=get_warc_url(record),
+                                         timestamp=get_warc_timestamp(record),
+                                         mime = get_warc_mime(record),
+                                         status = get_warc_status(record),
+                                         digest = get_warc_digest(record),
                                          offset = archive.get_record_offset(),
                                          path = self.path)
 
@@ -397,13 +419,6 @@ def fetch_cc(filename: str, offset: int, length: int, session: Optional[Session]
     return content
 
 # Cell
-from hashlib import sha1
-from base64 import b32encode
-
-def get_digest(content: bytes) -> str:
-    return b32encode(sha1(content).digest()).decode('ascii')
-
-# Cell
 _CC_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
 from IPython.display import FileLink
 
@@ -426,7 +441,7 @@ class CommonCrawlRecord:
         directory = Path(directory)
 
         if filename is None:
-            filename = get_digest(self.content) + '.html'
+            filename = sha1_digest(self.content) + '.html'
         path = directory / filename
         with open(path, 'wb') as f:
             f.write(self.content)

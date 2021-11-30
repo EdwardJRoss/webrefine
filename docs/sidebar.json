@@ -3,6 +3,7 @@
     "Overview": "/",
     "webrefine": "core.html",
     "Query": "query.html",
-    "Title": "engine.html"
+    "Title": "engine.html",
+    "Utility Functions": "util.html"
   }
 }

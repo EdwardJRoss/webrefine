@@ -3,6 +3,11 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"WarcFileRecord": "01_query.ipynb",
+         "get_warc_url": "01_query.ipynb",
+         "get_warc_timestamp": "01_query.ipynb",
+         "get_warc_mime": "01_query.ipynb",
+         "get_warc_status": "01_query.ipynb",
+         "get_warc_digest": "01_query.ipynb",
          "WarcFileQuery": "01_query.ipynb",
          "header_and_rows_to_dict": "01_query.ipynb",
          "mimetypes_to_regex": "01_query.ipynb",
@@ -24,12 +29,13 @@ index = {"WarcFileRecord": "01_query.ipynb",
          "CC_API_FILTER_BLACKLIST": "01_query.ipynb",
          "fetch_cc": "01_query.ipynb",
          "CC_DATA_URL": "01_query.ipynb",
-         "get_digest": "01_query.ipynb",
          "CommonCrawlRecord": "01_query.ipynb",
-         "CommonCrawlQuery": "01_query.ipynb"}
+         "CommonCrawlQuery": "01_query.ipynb",
+         "sha1_digest": "03_util.ipynb"}
 
 modules = ["core.py",
-           "query.py"]
+           "query.py",
+           "util.py"]
 
 doc_url = "https://EdwardJRoss.github.io/webrefine/"
 
