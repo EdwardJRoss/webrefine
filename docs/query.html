@@ -29,6 +29,24 @@ nb_path: "nbs/01_query.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is an interface to <em>querying</em> resources that can be fetched.</p>
@@ -41,23 +59,6 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_cache</span> <span class="o">=</span> <span class="s1">&#39;../data/test/cache&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -85,7 +86,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WarcFileRecord" class="doc_header"><code>class</code> <code>WarcFileRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L37" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>int</code>, <strong><code>path</code></strong>:<code>Path</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>digest</code></strong>:<code>str</code>)</p>
+<h2 id="WarcFileRecord" class="doc_header"><code>class</code> <code>WarcFileRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L35" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>int</code>, <strong><code>path</code></strong>:<code>Path</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>digest</code></strong>:<code>str</code>)</p>
 </blockquote>
 <p>WarcFileRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'int', path: 'Path', offset: 'int', digest: 'str')</p>
 
@@ -110,7 +111,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_warc_url" class="doc_header"><code>get_warc_url</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_url</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+<h4 id="get_warc_url" class="doc_header"><code>get_warc_url</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_url</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
 </blockquote>
 
 </div>
@@ -134,7 +135,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_warc_timestamp" class="doc_header"><code>get_warc_timestamp</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_timestamp</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+<h4 id="get_warc_timestamp" class="doc_header"><code>get_warc_timestamp</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L59" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_timestamp</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
 </blockquote>
 
 </div>
@@ -158,7 +159,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_warc_mime" class="doc_header"><code>get_warc_mime</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_mime</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+<h4 id="get_warc_mime" class="doc_header"><code>get_warc_mime</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L62" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_mime</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
 </blockquote>
 
 </div>
@@ -182,7 +183,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_warc_status" class="doc_header"><code>get_warc_status</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_status</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+<h4 id="get_warc_status" class="doc_header"><code>get_warc_status</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L65" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_status</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
 </blockquote>
 
 </div>
@@ -206,7 +207,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_warc_digest" class="doc_header"><code>get_warc_digest</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_digest</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
+<h4 id="get_warc_digest" class="doc_header"><code>get_warc_digest</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L68" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_warc_digest</code>(<strong><code>record</code></strong>:<code>ArcWarcRecord</code>)</p>
 </blockquote>
 
 </div>
@@ -230,7 +231,7 @@ The latter two have  a lot of overlap with <a href="https://github.com/cocrawler
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WarcFileQuery" class="doc_header"><code>class</code> <code>WarcFileQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L77" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileQuery</code>(<strong><code>path</code></strong>:<code>Union[str, Path]</code>)</p>
+<h2 id="WarcFileQuery" class="doc_header"><code>class</code> <code>WarcFileQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L75" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WarcFileQuery</code>(<strong><code>path</code></strong>:<code>Union[str, Path]</code>)</p>
 </blockquote>
 
 </div>
@@ -446,7 +447,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="header_and_rows_to_dict" class="doc_header"><code>header_and_rows_to_dict</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L101" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>header_and_rows_to_dict</code>(<strong><code>rows</code></strong>:<code>Iterable[list[Any]]</code>)</p>
+<h4 id="header_and_rows_to_dict" class="doc_header"><code>header_and_rows_to_dict</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L99" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>header_and_rows_to_dict</code>(<strong><code>rows</code></strong>:<code>Iterable[list[Any]]</code>)</p>
 </blockquote>
 
 </div>
@@ -543,7 +544,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mimetypes_to_regex" class="doc_header"><code>mimetypes_to_regex</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L118" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mimetypes_to_regex</code>(<strong><code>mime</code></strong>:<code>list[str]</code>, <strong><code>prefix</code></strong>=<em><code>'mimetype:'</code></em>)</p>
+<h4 id="mimetypes_to_regex" class="doc_header"><code>mimetypes_to_regex</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L116" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mimetypes_to_regex</code>(<strong><code>mime</code></strong>:<code>list[str]</code>, <strong><code>prefix</code></strong>=<em><code>'mimetype:'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -567,7 +568,7 @@ Let's transform it into a list of dictionaries of keys to values which make it a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_wayback_cdx" class="doc_header"><code>query_wayback_cdx</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L121" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_wayback_cdx</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_wayback_cdx" class="doc_header"><code>query_wayback_cdx</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L119" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_wayback_cdx</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Get references to Wayback Machine Captures for url.</p>
 <p>Queries the Internet Archive Capture Index (CDX) for url.</p>
@@ -628,177 +629,10 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 18.5 ms, sys: 8.02 ms, total: 26.6 ms
-Wall time: 887 ms
+<pre>CPU times: user 22.6 ms, sys: 3.83 ms, total: 26.5 ms
+Wall time: 1.15 s
 </pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_sample</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;urlkey&#39;: &#39;com,skeptric)/&#39;,
-  &#39;timestamp&#39;: &#39;20180805132731&#39;,
-  &#39;original&#39;: &#39;http://skeptric.com/&#39;,
-  &#39;mimetype&#39;: &#39;text/html&#39;,
-  &#39;statuscode&#39;: &#39;200&#39;,
-  &#39;digest&#39;: &#39;2N5QQYZFAM36CSESTGSDKRTRV7I5HEXJ&#39;,
-  &#39;length&#39;: &#39;1982&#39;},
- {&#39;urlkey&#39;: &#39;com,skeptric)/&#39;,
-  &#39;timestamp&#39;: &#39;20190610142553&#39;,
-  &#39;original&#39;: &#39;http://skeptric.com/&#39;,
-  &#39;mimetype&#39;: &#39;warc/revisit&#39;,
-  &#39;statuscode&#39;: &#39;-&#39;,
-  &#39;digest&#39;: &#39;2N5QQYZFAM36CSESTGSDKRTRV7I5HEXJ&#39;,
-  &#39;length&#39;: &#39;580&#39;},
- {&#39;urlkey&#39;: &#39;com,skeptric)/&#39;,
-  &#39;timestamp&#39;: &#39;20201126064102&#39;,
-  &#39;original&#39;: &#39;https://skeptric.com/&#39;,
-  &#39;mimetype&#39;: &#39;text/html&#39;,
-  &#39;statuscode&#39;: &#39;200&#39;,
-  &#39;digest&#39;: &#39;WDYU3RU7ZMFFSZPAPE56PC4L3EK4FE3D&#39;,
-  &#39;length&#39;: &#39;82985&#39;}]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_sample</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">full_sample</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1591</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timestamps</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">full_sample</span><span class="p">]</span>
-<span class="nb">min</span><span class="p">(</span><span class="n">timestamps</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">timestamps</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(&#39;20170915060403&#39;, &#39;20211128181259&#39;)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="n">Counter</span><span class="p">([(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;mimetype&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;statuscode&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">full_sample</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Counter({(&#39;text/html&#39;, &#39;200&#39;): 397,
-         (&#39;warc/revisit&#39;, &#39;-&#39;): 765,
-         (&#39;text/css&#39;, &#39;200&#39;): 10,
-         (&#39;image/vnd.microsoft.icon&#39;, &#39;200&#39;): 1,
-         (&#39;image/x-icon&#39;, &#39;200&#39;): 2,
-         (&#39;image/png&#39;, &#39;200&#39;): 292,
-         (&#39;image/jpeg&#39;, &#39;200&#39;): 59,
-         (&#39;application/octet-stream&#39;, &#39;200&#39;): 3,
-         (&#39;image/svg+xml&#39;, &#39;200&#39;): 51,
-         (&#39;image/gif&#39;, &#39;200&#39;): 3,
-         (&#39;application/javascript&#39;, &#39;200&#39;): 1,
-         (&#39;text/html&#39;, &#39;404&#39;): 5,
-         (&#39;text/html&#39;, &#39;302&#39;): 2})</pre>
-</div>
-
 </div>
 
 </div>
@@ -834,8 +668,8 @@ Wall time: 887 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 12.1 ms, sys: 1.29 ms, total: 13.4 ms
-Wall time: 672 ms
+<pre>CPU times: user 16.5 ms, sys: 596 µs, total: 17.1 ms
+Wall time: 808 ms
 </pre>
 </div>
 </div>
@@ -890,8 +724,8 @@ Wall time: 672 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 10.8 ms, sys: 970 µs, total: 11.8 ms
-Wall time: 630 ms
+<pre>CPU times: user 10.2 ms, sys: 183 µs, total: 10.4 ms
+Wall time: 611 ms
 </pre>
 </div>
 </div>
@@ -940,8 +774,8 @@ Wall time: 630 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 8.59 ms, sys: 439 µs, total: 9.03 ms
-Wall time: 679 ms
+<pre>CPU times: user 5.91 ms, sys: 2.61 ms, total: 8.52 ms
+Wall time: 698 ms
 </pre>
 </div>
 </div>
@@ -991,8 +825,8 @@ Wall time: 679 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 10.5 ms, sys: 98 µs, total: 10.6 ms
-Wall time: 451 ms
+<pre>CPU times: user 5.76 ms, sys: 454 µs, total: 6.21 ms
+Wall time: 446 ms
 </pre>
 </div>
 </div>
@@ -1048,8 +882,8 @@ Wall time: 451 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 11 ms, sys: 222 µs, total: 11.3 ms
-Wall time: 482 ms
+<pre>CPU times: user 4.68 ms, sys: 6.3 ms, total: 11 ms
+Wall time: 444 ms
 </pre>
 </div>
 </div>
@@ -1108,8 +942,8 @@ Wall time: 482 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 10.5 ms, sys: 112 µs, total: 10.6 ms
-Wall time: 501 ms
+<pre>CPU times: user 11.5 ms, sys: 343 µs, total: 11.8 ms
+Wall time: 441 ms
 </pre>
 </div>
 </div>
@@ -1158,8 +992,8 @@ Wall time: 501 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 10.5 ms, sys: 3.2 ms, total: 13.7 ms
-Wall time: 803 ms
+<pre>CPU times: user 16.6 ms, sys: 684 µs, total: 17.3 ms
+Wall time: 975 ms
 </pre>
 </div>
 </div>
@@ -1214,8 +1048,8 @@ Wall time: 803 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 7.91 ms, sys: 274 µs, total: 8.18 ms
-Wall time: 515 ms
+<pre>CPU times: user 8.4 ms, sys: 382 µs, total: 8.78 ms
+Wall time: 415 ms
 </pre>
 </div>
 </div>
@@ -1280,8 +1114,8 @@ Wall time: 515 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 7.61 ms, sys: 0 ns, total: 7.61 ms
-Wall time: 440 ms
+<pre>CPU times: user 8.54 ms, sys: 366 µs, total: 8.91 ms
+Wall time: 711 ms
 </pre>
 </div>
 </div>
@@ -1315,6 +1149,14 @@ Wall time: 440 ms
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The original content is at <code>http://web.archive.org/web/{timestamp}_id/{url}</code>, and the Wayback Machine version is the same excluding <code>_id</code>.
+The Wayback Machine version <a href="https://skeptric.com/restoring-wayback-html/">makes some changes</a> that make it better for interactive viewing, but the content is different.</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1326,7 +1168,31 @@ Wall time: 440 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="fetch_wayback_content" class="doc_header"><code>fetch_wayback_content</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L167" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_wayback_content</code>(<strong><code>timestamp</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="wayback_url" class="doc_header"><code>wayback_url</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L165" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>wayback_url</code>(<strong><code>timestamp</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>wayback</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="fetch_wayback_content" class="doc_header"><code>fetch_wayback_content</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L169" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_wayback_content</code>(<strong><code>timestamp</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -1446,32 +1312,23 @@ Wall time: 440 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1150</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And fetching a HTML webpage</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1480,32 +1337,9 @@ Wall time: 440 ms
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">record</span> <span class="o">=</span> <span class="n">ok_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">record</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;urlkey&#39;: &#39;com,skeptric)/&#39;,
- &#39;timestamp&#39;: &#39;20180805132731&#39;,
- &#39;original&#39;: &#39;http://skeptric.com/&#39;,
- &#39;mimetype&#39;: &#39;text/html&#39;,
- &#39;statuscode&#39;: &#39;200&#39;,
- &#39;digest&#39;: &#39;2N5QQYZFAM36CSESTGSDKRTRV7I5HEXJ&#39;,
- &#39;length&#39;: &#39;1982&#39;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -1536,7 +1370,31 @@ Wall time: 440 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Get the Wayback URL for preview</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">URL</span><span class="p">(</span><span class="n">wayback_url</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">],</span> <span class="n">wayback</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1549,9 +1407,8 @@ Wall time: 440 ms
 <div class="output_area">
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&#34;en&#34;&gt;\n  &lt;head&gt;&lt;script src=&#34;//archive.org/includes/analytics.js?v=cf34f82&#34;&#39;</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<a href="http://web.archive.org/web/20180805132731/http://skeptric.com/">http://web.archive.org/web/20180805132731/http://skeptric.com/</a>
 </div>
 
 </div>
@@ -1564,7 +1421,7 @@ Wall time: 440 ms
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wayback-Object">Wayback Object<a class="anchor-link" href="#Wayback-Object"> </a></h2>
+<h2 id="Wayback-Record-Object">Wayback Record Object<a class="anchor-link" href="#Wayback-Record-Object"> </a></h2>
 </div>
 </div>
 </div>
@@ -1579,9 +1436,9 @@ Wall time: 440 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WaybackRecord" class="doc_header"><code>class</code> <code>WaybackRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L182" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
+<h2 id="WaybackRecord" class="doc_header"><code>class</code> <code>WaybackRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L185" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>mime</code></strong>:<code>str</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>digest</code></strong>:<code>str</code>)</p>
 </blockquote>
-<p>WaybackRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'Optional[int]', cache_location: 'Optional[Union[str, Path]]' = None)</p>
+<p>WaybackRecord(url: 'str', timestamp: 'datetime', mime: 'str', status: 'Optional[int]', digest: 'str')</p>
 
 </div>
 
@@ -1607,7 +1464,7 @@ Wall time: 440 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">record</span> <span class="o">=</span> <span class="n">WaybackRecord</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">full_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">test_cache</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">record</span> <span class="o">=</span> <span class="n">WaybackRecord</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">full_sample</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">record</span>
 </pre></div>
 
@@ -1623,7 +1480,39 @@ Wall time: 440 ms
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>WaybackRecord(url=&#39;http://skeptric.com/&#39;, timestamp=datetime.datetime(2018, 8, 5, 13, 27, 31), mime=&#39;text/html&#39;, status=200, cache_location=&#39;../data/test/cache&#39;)</pre>
+<pre>WaybackRecord(url=&#39;http://skeptric.com/&#39;, timestamp=datetime.datetime(2018, 8, 5, 13, 27, 31), mime=&#39;text/html&#39;, status=200, digest=&#39;2N5QQYZFAM36CSESTGSDKRTRV7I5HEXJ&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">record</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<a href="http://web.archive.org/web/20180805132731/http://skeptric.com/">http://web.archive.org/web/20180805132731/http://skeptric.com/</a>
 </div>
 
 </div>
@@ -1642,7 +1531,8 @@ Wall time: 440 ms
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">record</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">content</span>
+<span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1655,8 +1545,8 @@ Wall time: 440 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 14 ms, sys: 2.75 ms, total: 16.7 ms
-Wall time: 376 ms
+<pre>CPU times: user 8.38 ms, sys: 3.03 ms, total: 11.4 ms
+Wall time: 718 ms
 </pre>
 </div>
 </div>
@@ -1666,11 +1556,28 @@ Wall time: 376 ms
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&#34;en&#34;&gt;\n  &lt;head&gt;&lt;script src=&#34;//archive.org/includes/analytics.js?v=cf34f82&#34;&#39;</pre>
+<pre>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&#34;en&#34;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&#34;utf-8&#34; /&gt;\n    &lt;title&gt;Edward Ross - An \xc9&#39;</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="o">.</span><span class="n">digest</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -1679,54 +1586,10 @@ Wall time: 376 ms
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Should be much quicker second time</p>
-
+<h2 id="Wayback-Query">Wayback Query<a class="anchor-link" href="#Wayback-Query"> </a></h2>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">record</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 3.45 ms, sys: 0 ns, total: 3.45 ms
-Wall time: 2.44 ms
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>b&#39;&lt;!DOCTYPE html&gt;\n&lt;html lang=&#34;en&#34;&gt;\n  &lt;head&gt;&lt;script src=&#34;//archive.org/includes/analytics.js?v=cf34f82&#34;&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1738,9 +1601,9 @@ Wall time: 2.44 ms
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="WaybackQuery" class="doc_header"><code>class</code> <code>WaybackQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L231" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
+<h2 id="WaybackQuery" class="doc_header"><code>class</code> <code>WaybackQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L220" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>WaybackQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>, <strong><code>end</code></strong>:<code>Optional[str]</code>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>WaybackQuery(url: 'str', start: 'Optional[str]', end: 'Optional[str]', status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None, cache_location: 'Optional[str]' = None, cache_verbose: 'int' = 0)</p>
+<p>WaybackQuery(url: 'str', start: 'Optional[str]', end: 'Optional[str]', status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None)</p>
 
 </div>
 
@@ -1772,41 +1635,10 @@ Wall time: 2.44 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wb</span> <span class="o">=</span> <span class="n">WaybackQuery</span><span class="p">(</span><span class="s1">&#39;skeptric.com/*&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">,</span> <span class="n">cache_verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wb</span> <span class="o">=</span> <span class="n">WaybackQuery</span><span class="p">(</span><span class="s1">&#39;skeptric.com/*&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wb</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:root:[Memory(location=../data/test/cache/joblib)]: Flushing completely the cache
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1834,12 +1666,8 @@ Wall time: 2.44 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-2773891608.query_wayback_cdx...
-query_wayback_cdx(&#39;skeptric.com/*&#39;, None, None, True, None, None, session=None)
-________________________________________________query_wayback_cdx - 0.8s, 0.0min
-CPU times: user 148 ms, sys: 8.82 ms, total: 156 ms
-Wall time: 800 ms
+<pre>CPU times: user 53.9 ms, sys: 3.47 ms, total: 57.3 ms
+Wall time: 1.15 s
 </pre>
 </div>
 </div>
@@ -1857,40 +1685,7 @@ Wall time: 800 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">items2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">wb</span><span class="o">.</span><span class="n">query</span><span class="p">())</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 82.4 ms, sys: 3.37 ms, total: 85.7 ms
-Wall time: 85.5 ms
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">items2</span> <span class="o">==</span> <span class="n">items</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span>
 </pre></div>
 
     </div>
@@ -1907,127 +1702,8 @@ Wall time: 85.5 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">items3</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">wb</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-2773891608.query_wayback_cdx...
-query_wayback_cdx(&#39;skeptric.com/*&#39;, None, None, True, None, None, session=None)
-________________________________________________query_wayback_cdx - 0.8s, 0.0min
-CPU times: user 132 ms, sys: 6.68 ms, total: 138 ms
-Wall time: 782 ms
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">items3</span> <span class="o">==</span> <span class="n">items</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">content</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 6.94 ms, sys: 6.08 ms, total: 13 ms
-Wall time: 364 ms
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">content2</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 2.79 ms, sys: 553 µs, total: 3.34 ms
-Wall time: 4.54 ms
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">content2</span> <span class="o">==</span> <span class="n">content</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
+<span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">digest</span>
 </pre></div>
 
     </div>
@@ -2043,54 +1719,6 @@ Wall time: 4.54 ms
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wb</span> <span class="o">=</span> <span class="n">WaybackQuery</span><span class="p">(</span><span class="s1">&#39;skeptric.com/*&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wb</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:root:[Memory(location=../data/test/cache/joblib)]: Flushing completely the cache
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I have no idea whether Session is <a href="https://github.com/urllib3/urllib3/issues/1252">actually thread-safe</a>; if it's not we should have 1 session per thread. As far as I can tell the issue occurs when you have lots of hosts, so in this case it should be ok.</p>
@@ -2103,54 +1731,21 @@ Using a Session makes things slightly faster; we can always turn it off by passi
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<div class="output_wrapper">
-<div class="output">
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">Parallel</span>
 
-<div class="output_area">
+<span class="k">def</span> <span class="nf">wayback_fetch_parallel</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">make_session</span><span class="p">(</span><span class="n">threads</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">threads</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s1">&#39;threads&#39;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_content</span><span class="p">)(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+</pre></div>
 
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="make_session" class="doc_header"><code>make_session</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L257" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_session</code>(<strong><code>pool_maxsize</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
+    </div>
 </div>
 </div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="wayback_fetch_parallel" class="doc_header"><code>wayback_fetch_parallel</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L265" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>wayback_fetch_parallel</code>(<strong><code>items</code></strong>, <strong><code>threads</code></strong>=<em><code>8</code></em>, <strong><code>session</code></strong>=<em><code>None</code></em>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -2176,8 +1771,8 @@ Using a Session makes things slightly faster; we can always turn it off by passi
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 239 ms, sys: 97.9 ms, total: 337 ms
-Wall time: 3.51 s
+<pre>CPU times: user 165 ms, sys: 16.7 ms, total: 181 ms
+Wall time: 846 ms
 </pre>
 </div>
 </div>
@@ -2242,7 +1837,7 @@ Wall time: 3.51 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_cc_indexes" class="doc_header"><code>get_cc_indexes</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L272" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cc_indexes</code>()</p>
+<h4 id="get_cc_indexes" class="doc_header"><code>get_cc_indexes</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L236" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cc_indexes</code>()</p>
 </blockquote>
 
 </div>
@@ -2381,7 +1976,7 @@ Wall time: 3.51 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="parse_cc_crawl_date" class="doc_header"><code>parse_cc_crawl_date</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L280" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_cc_crawl_date</code>(<strong><code>crawl_id</code></strong>:<code>str</code>)</p>
+<h4 id="parse_cc_crawl_date" class="doc_header"><code>parse_cc_crawl_date</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L244" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_cc_crawl_date</code>(<strong><code>crawl_id</code></strong>:<code>str</code>)</p>
 </blockquote>
 
 </div>
@@ -2429,7 +2024,7 @@ Wall time: 3.51 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cc_index_by_time" class="doc_header"><code>cc_index_by_time</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L291" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cc_index_by_time</code>(<strong><code>start</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>indexes</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>)</p>
+<h4 id="cc_index_by_time" class="doc_header"><code>cc_index_by_time</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L255" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cc_index_by_time</code>(<strong><code>start</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[datetime]</code>=<em><code>None</code></em>, <strong><code>indexes</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Gets all indexes that may contain entries between start and end</p>
 <p>Generally errs on the side of giving an additional index</p>
@@ -2615,7 +2210,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="jsonl_loads" class="doc_header"><code>jsonl_loads</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L318" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_loads</code>(<strong><code>jsonl</code></strong>)</p>
+<h4 id="jsonl_loads" class="doc_header"><code>jsonl_loads</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L282" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_loads</code>(<strong><code>jsonl</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -2673,7 +2268,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_cc_cdx_num_pages" class="doc_header"><code>query_cc_cdx_num_pages</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L328" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_num_pages</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_cc_cdx_num_pages" class="doc_header"><code>query_cc_cdx_num_pages</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L292" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_num_pages</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>5</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -2697,7 +2292,7 @@ It also uses the zipped CDX by default which automatically paginates.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="query_cc_cdx_page" class="doc_header"><code>query_cc_cdx_page</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L340" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_page</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page</code></strong>:<code>int</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="query_cc_cdx_page" class="doc_header"><code>query_cc_cdx_page</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L304" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>query_cc_cdx_page</code>(<strong><code>api</code></strong>:<code>str</code>, <strong><code>url</code></strong>:<code>str</code>, <strong><code>page</code></strong>:<code>int</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>limit</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>offset</code></strong>:<code>Optional[int]</code>=<em><code>None</code></em>, <strong><code>page_size</code></strong>:<code>int</code>=<em><code>5</code></em>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Get references to Common Crawl Captures for url.</p>
 <p>Queries the Common Crawl Capture Index (CDX) for url.</p>
@@ -2762,7 +2357,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="n">query_cc_cdx_num_pages</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="n">query_cc_cdx_num_pages</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pages</span>
 </pre></div>
 
@@ -2798,7 +2393,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pages</span><span class="p">):</span>
-    <span class="n">records</span> <span class="o">+=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">+=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
 </pre></div>
 
@@ -2876,7 +2471,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="kn">import</span> <span class="n">HTTPError</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">pages</span><span class="p">,</span> <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">)</span>
+    <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">cc_sample_api</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">pages</span><span class="p">,</span> <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s1">&#39;Expected Failure&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">status</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
@@ -2936,7 +2531,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">api_2015_11</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">api_2015_11</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Has it been fixed? Remove the blacklist&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">404</span><span class="p">:</span>
@@ -2964,7 +2559,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">api_2015_11</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">query_cc_cdx_page</span><span class="p">(</span><span class="n">api_2015_11</span><span class="p">,</span> <span class="n">test_url</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2998,7 +2593,7 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="fetch_cc" class="doc_header"><code>fetch_cc</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L400" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_cc</code>(<strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
+<h4 id="fetch_cc" class="doc_header"><code>fetch_cc</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L364" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fetch_cc</code>(<strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>session</code></strong>:<code>Optional[Session]</code>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -3112,8 +2707,8 @@ Filters results between start and end inclusive, in format YYYYmmddHHMMSS or any
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 22.9 ms, sys: 3.94 ms, total: 26.9 ms
-Wall time: 1.07 s
+<pre>CPU times: user 25.2 ms, sys: 56 µs, total: 25.3 ms
+Wall time: 1.17 s
 </pre>
 </div>
 </div>
@@ -3198,9 +2793,9 @@ Wall time: 1.07 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L425" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>cache_location</code></strong>:<code>Optional[Union[str, Path]]</code>=<em><code>None</code></em>)</p>
+<h2 id="CommonCrawlRecord" class="doc_header"><code>class</code> <code>CommonCrawlRecord</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L389" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlRecord</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>timestamp</code></strong>:<code>datetime</code>, <strong><code>filename</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong><code>mime</code></strong>:<code>Optional[str]</code>, <strong><code>status</code></strong>:<code>Optional[int]</code>, <strong><code>digest</code></strong>:<code>Optional[str]</code>)</p>
 </blockquote>
-<p>CommonCrawlRecord(url: 'str', timestamp: 'datetime', filename: 'str', offset: 'int', length: 'int', mime: 'Optional[str]', status: 'Optional[int]', cache_location: 'Optional[Union[str, Path]]' = None)</p>
+<p>CommonCrawlRecord(url: 'str', timestamp: 'datetime', filename: 'str', offset: 'int', length: 'int', mime: 'Optional[str]', status: 'Optional[int]', digest: 'Optional[str]')</p>
 
 </div>
 
@@ -3270,7 +2865,7 @@ Wall time: 1.07 s
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">_cc_cdx_to_record</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">_cc_cdx_to_record</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
 <span class="n">x</span>
 </pre></div>
 
@@ -3286,7 +2881,7 @@ Wall time: 1.07 s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CommonCrawlRecord(url=&#39;https://en.wikipedia.org/?curid=3516101&#39;, timestamp=datetime.datetime(2021, 10, 24, 5, 15, 54), filename=&#39;crawl-data/CC-MAIN-2021-43/segments/1634323585911.17/warc/CC-MAIN-20211024050128-20211024080128-00689.warc.gz&#39;, offset=&#39;332329771&#39;, length=&#39;8922&#39;, mime=&#39;text/html&#39;, status=200, cache_location=&#39;../data/test/cache&#39;)</pre>
+<pre>CommonCrawlRecord(url=&#39;https://en.wikipedia.org/?curid=3516101&#39;, timestamp=datetime.datetime(2021, 10, 24, 5, 15, 54), filename=&#39;crawl-data/CC-MAIN-2021-43/segments/1634323585911.17/warc/CC-MAIN-20211024050128-20211024080128-00689.warc.gz&#39;, offset=&#39;332329771&#39;, length=&#39;8922&#39;, mime=&#39;text/html&#39;, status=200, digest=&#39;TFZFWXWKS3NFJLLLXLYU6JTNZ77D3IVD&#39;)</pre>
 </div>
 
 </div>
@@ -3337,8 +2932,10 @@ Wall time: 1.07 s
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
-<span class="n">path</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="s1">&#39;wb&#39;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.html&#39;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+<span class="n">x</span><span class="o">.</span><span class="n">preview</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3352,7 +2949,7 @@ Wall time: 1.07 s
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<a href='../data/test/cache/TFZFWXWKS3NFJLLLXLYU6JTNZ77D3IVD.html' target='_blank'>../data/test/cache/TFZFWXWKS3NFJLLLXLYU6JTNZ77D3IVD.html</a><br>
+<a href='tmpn7cny9ks.html' target='_blank'>tmpn7cny9ks.html</a><br>
 </div>
 
 </div>
@@ -3370,8 +2967,7 @@ Wall time: 1.07 s
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -3383,8 +2979,7 @@ Wall time: 1.07 s
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that filters aren't strict...</p>
-
+<h2 id="Common-Crawl-Query">Common Crawl Query<a class="anchor-link" href="#Common-Crawl-Query"> </a></h2>
 </div>
 </div>
 </div>
@@ -3399,9 +2994,9 @@ Wall time: 1.07 s
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L493" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>, <strong><code>cache_location</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>cache_verbose</code></strong>:<code>int</code>=<em><code>0</code></em>)</p>
+<h2 id="CommonCrawlQuery" class="doc_header"><code>class</code> <code>CommonCrawlQuery</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/query.py#L436" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CommonCrawlQuery</code>(<strong><code>url</code></strong>:<code>str</code>, <strong><code>start</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>end</code></strong>:<code>Optional[str]</code>=<em><code>None</code></em>, <strong><code>apis</code></strong>:<code>Optional[list[str]]</code>=<em><code>None</code></em>, <strong><code>status_ok</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>mime</code></strong>:<code>Optional[Union[str, Iterable[str]]]</code>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>CommonCrawlQuery(url: 'str', start: 'Optional[str]' = None, end: 'Optional[str]' = None, apis: 'Optional[list[str]]' = None, status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None, cache_location: 'Optional[str]' = None, cache_verbose: 'int' = 0)</p>
+<p>CommonCrawlQuery(url: 'str', start: 'Optional[str]' = None, end: 'Optional[str]' = None, apis: 'Optional[list[str]]' = None, status_ok: 'bool' = True, mime: 'Optional[Union[str, Iterable[str]]]' = None)</p>
 
 </div>
 
@@ -3467,8 +3062,7 @@ Wall time: 1.07 s
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">query_cc_all</span> <span class="o">=</span> <span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="s1">&#39;www.commoncrawl.org/*&#39;</span><span class="p">,</span>
-                           <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-                                <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">,</span> <span class="n">cache_verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                           <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -3499,8 +3093,8 @@ Wall time: 1.07 s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 5.56 ms, sys: 0 ns, total: 5.56 ms
-Wall time: 5.3 ms
+<pre>CPU times: user 4.73 ms, sys: 307 µs, total: 5.04 ms
+Wall time: 5.02 ms
 </pre>
 </div>
 </div>
@@ -3522,13 +3116,6 @@ Wall time: 5.3 ms
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>TODO: Cache failures somewhere</p>
-
-</div>
-</div>
-</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -3546,29 +3133,6 @@ Wall time: 5.3 ms
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
-query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2015-11-index&#39;, &#39;www.commoncrawl.org/*&#39;, page_size=1, session=None)
-___________________________________________query_cc_cdx_num_pages - 0.9s, 0.0min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-11-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False, session=None)
-_______________________________________________query_cc_cdx_page - 10.9s, 0.2min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
-query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2015-06-index&#39;, &#39;www.commoncrawl.org/*&#39;, page_size=1, session=None)
-___________________________________________query_cc_cdx_num_pages - 2.6s, 0.0min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2015-06-index&#39;, &#39;www.commoncrawl.org/*&#39;, 0, page_size=1, status_ok=False, session=None)
-________________________________________________query_cc_cdx_page - 1.9s, 0.0min
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -3615,7 +3179,7 @@ ________________________________________________query_cc_cdx_page - 1.9s, 0.0min
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CommonCrawlRecord(url=&#39;http://commoncrawl.org/&#39;, timestamp=datetime.datetime(2015, 3, 2, 3, 27, 5), filename=&#39;crawl-data/CC-MAIN-2015-11/segments/1424936462700.28/warc/CC-MAIN-20150226074102-00159-ip-10-28-5-156.ec2.internal.warc.gz&#39;, offset=&#39;53235662&#39;, length=&#39;2526&#39;, mime=None, status=None, cache_location=&#39;../data/test/cache&#39;)</pre>
+<pre>CommonCrawlRecord(url=&#39;http://commoncrawl.org/&#39;, timestamp=datetime.datetime(2015, 3, 2, 3, 27, 5), filename=&#39;crawl-data/CC-MAIN-2015-11/segments/1424936462700.28/warc/CC-MAIN-20150226074102-00159-ip-10-28-5-156.ec2.internal.warc.gz&#39;, offset=&#39;53235662&#39;, length=&#39;2526&#39;, mime=None, status=None, digest=&#39;QE4UUUWUJWEZBBK6PUG3CHFAGEKDMDBZ&#39;)</pre>
 </div>
 
 </div>
@@ -3691,8 +3255,7 @@ ________________________________________________query_cc_cdx_page - 1.9s, 0.0min
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cc_archive_all</span> <span class="o">=</span> <span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span>
                                   <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">],</span>
-                                  <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                 <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">,</span> <span class="n">cache_verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                                  <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cc_archive_all</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
@@ -3706,21 +3269,6 @@ ________________________________________________query_cc_cdx_page - 1.9s, 0.0min
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
-query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, page_size=5, session=None)
-___________________________________________query_cc_cdx_num_pages - 0.7s, 0.0min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None, session=None)
-_______________________________________________query_cc_cdx_page - 10.5s, 0.2min
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -3751,86 +3299,6 @@ _______________________________________________query_cc_cdx_page - 10.5s, 0.2min
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cc_archive_all</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="k">assert</span> <span class="n">results</span> <span class="o">==</span> <span class="n">results2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
-query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, page_size=4, session=None)
-___________________________________________query_cc_cdx_num_pages - 3.6s, 0.1min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=4, status_ok=False, mime=None, session=None)
-________________________________________________query_cc_cdx_page - 2.9s, 0.0min
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results3</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cc_archive_all</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-
-<span class="k">assert</span> <span class="n">results</span> <span class="o">==</span> <span class="n">results3</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_num_pages...
-query_cc_cdx_num_pages(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, page_size=5, session=None)
-___________________________________________query_cc_cdx_num_pages - 0.8s, 0.0min
-________________________________________________________________________________
-[Memory] Calling __main__--tmp-ipykernel-4254681292.query_cc_cdx_page...
-query_cc_cdx_page(&#39;https://index.commoncrawl.org/CC-MAIN-2021-43-index&#39;, &#39;upload.wikimedia.org/wikipedia/commons/*&#39;, 0, page_size=5, status_ok=False, mime=None, session=None)
-________________________________________________query_cc_cdx_page - 2.6s, 0.0min
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Test-status">Test status<a class="anchor-link" href="#Test-status"> </a></h3>
@@ -3845,8 +3313,7 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_ok</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span>
-                                  <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">],</span>
-                                 <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+                                  <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="n">results_ok</span> <span class="o">==</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">]</span>
 </pre></div>
@@ -3881,8 +3348,7 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_html</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span>
                                   <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">],</span>
                                   <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">,</span>
-                                 <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+                                  <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="n">results_html</span> <span class="o">==</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">mime</span> <span class="o">==</span> <span class="s1">&#39;text/html&#39;</span><span class="p">]</span>
 </pre></div>
@@ -3905,8 +3371,7 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 <span class="n">results_mime</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span>
                                   <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">],</span>
                                   <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="n">mime</span><span class="o">=</span><span class="n">mimes</span><span class="p">,</span>
-                                 <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+                                  <span class="n">mime</span><span class="o">=</span><span class="n">mimes</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="n">results_mime</span> <span class="o">==</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">mime</span> <span class="ow">in</span> <span class="n">mimes</span><span class="p">]</span>
 </pre></div>
@@ -3928,8 +3393,7 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_image</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">CommonCrawlQuery</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span>
                                   <span class="n">apis</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-MAIN-2021-43&#39;</span><span class="p">],</span>
                                   <span class="n">status_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;image/*&#39;</span><span class="p">,</span>
-                                 <span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+                                  <span class="n">mime</span><span class="o">=</span><span class="s1">&#39;image/*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="n">results_image</span> <span class="o">==</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">mime</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;image/&#39;</span><span class="p">)]</span>
 </pre></div>
@@ -3965,8 +3429,7 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
  <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="s1">&#39;650789450&#39;</span><span class="p">,</span>
  <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;crawl-data/CC-MAIN-2021-43/segments/1634323588284.71/warc/CC-MAIN-20211028100619-20211028130619-00465.warc.gz&#39;</span><span class="p">,</span>
  <span class="s1">&#39;languages&#39;</span><span class="p">:</span> <span class="s1">&#39;eng&#39;</span><span class="p">,</span>
- <span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">},</span> 
-<span class="n">cache_location</span><span class="o">=</span><span class="n">test_cache</span><span class="p">)</span>
+ <span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">})</span>
 </pre></div>
 
     </div>
@@ -3983,7 +3446,55 @@ ________________________________________________query_cc_cdx_page - 2.6s, 0.0min
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;7RBLUZ55MD4FUPDRPVVJVTM7YDYQXRS3&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">sha1_digest</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="o">.</span><span class="n">digest</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Check-fetching-in-parallel">Check fetching in parallel<a class="anchor-link" href="#Check-fetching-in-parallel"> </a></h3><p>Since they're hosted on AWS S3 we can go wild with parallelism.
+This code is actually identical to the wayback version</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">Parallel</span>
+
+
+<span class="k">def</span> <span class="nf">cc_fetch_parallel</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">make_session</span><span class="p">(</span><span class="n">threads</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">threads</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s1">&#39;threads&#39;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_content</span><span class="p">)(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">many_content</span> <span class="o">=</span> <span class="n">cc_fetch_parallel</span><span class="p">(</span><span class="n">results_html</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span>
 </pre></div>
 
     </div>

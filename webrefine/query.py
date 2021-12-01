@@ -6,15 +6,15 @@ from __future__ import annotations # For Python <3.9
 
 __all__ = ['WarcFileRecord', 'get_warc_url', 'get_warc_timestamp', 'get_warc_mime', 'get_warc_status',
            'get_warc_digest', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimetypes_to_regex', 'query_wayback_cdx',
-           'IA_CDX_URL', 'CaptureIndexRecord', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery', 'make_session',
-           'wayback_fetch_parallel', 'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads',
-           'CC_PAGE_SIZE', 'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc',
-           'CC_DATA_URL', 'CommonCrawlRecord', 'CommonCrawlQuery']
+           'IA_CDX_URL', 'CaptureIndexRecord', 'wayback_url', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery',
+           'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads', 'CC_PAGE_SIZE',
+           'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc', 'CC_DATA_URL',
+           'CommonCrawlRecord', 'CommonCrawlQuery']
 
 # Cell
 # Typing
 #nbdev_comment from __future__ import annotations # For Python <3.9
-from typing import Any, Generator, Optional, Union
+from typing import Any, Callable, Generator, Optional, Union
 from collections.abc import Iterable
 from pathlib import Path
 from dataclasses import dataclass
@@ -28,9 +28,7 @@ import json
 from warcio.recordloader import ArcWarcRecord
 import warcio
 
-from .util import sha1_digest
-
-from joblib import Memory, delayed, Parallel
+from .util import sha1_digest, URL, make_session
 
 # Cell
 
@@ -164,12 +162,16 @@ def query_wayback_cdx(url: str, start: Optional[str], end: Optional[str],
     return header_and_rows_to_dict(response.json())
 
 # Cell
+def wayback_url(timestamp: str, url: str, wayback: bool = False) -> str:
+    postfix = '' if wayback else 'id_'
+    return f'http://web.archive.org/web/{timestamp}{postfix}/{url}'
+
 def fetch_wayback_content(timestamp: str, url: str,
                           session: Optional[Session] = None) -> Optional[bytes]:
     if session is None:
         session = requests
 
-    url = f'http://web.archive.org/web/{timestamp}/{url}'
+    url = wayback_url(timestamp, url)
     response = session.get(url)
     # Sometimes Internet Archive deletes records
     if response.status_code == 404:
@@ -179,55 +181,42 @@ def fetch_wayback_content(timestamp: str, url: str,
     return response.content
 
 # Cell
+
 @dataclass(frozen=True)
 class WaybackRecord:
     url: str
     timestamp: datetime
     mime: str
     status: Optional[int]
-    cache_location: Optional[Union[str, Path]] = None
+    digest: str
+
+    def preview(self) -> URL:
+        return URL(wayback_url(self.timestamp_str, self.url, wayback=True))
 
     @property
     def timestamp_str(self) -> str:
         return self.timestamp.strftime(_WAYBACK_TIMESTAMP_FORMAT)
 
-    @property
-    def _get_content(self):
-        memory = Memory(self.cache_location, verbose=0)
-        query = memory.cache(fetch_wayback_content, ignore=['session'])
-        return query
-
     def get_content(self, session=None) -> Optional[bytes]:
-        return self._get_content(timestamp=self.timestamp_str, url=self.url, session=None)
+        return fetch_wayback_content(self.timestamp_str, self.url, session=None)
 
     @property
     def content(self):
         return self.get_content()
 
     @classmethod
-    def from_dict(cls, record: dict, cache_location:  Optional[Union[str, Path]] = None):
-        return _wayback_cdx_to_record(record, cache_location)
+    def from_dict(cls, record: dict):
+        return _wayback_cdx_to_record(record)
 
 _WAYBACK_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
-def _wayback_cdx_to_record(record: dict, cache_location: Optional[Union[str, Path]] = None) -> WaybackRecord:
+def _wayback_cdx_to_record(record: dict) -> WaybackRecord:
     return WaybackRecord(url = record['original'],
                          timestamp = datetime.strptime(record['timestamp'], _WAYBACK_TIMESTAMP_FORMAT),
                          mime = record['mimetype'],
                          status = None if record['statuscode'] == '-' else int(record['statuscode']),
-                         cache_location = cache_location)
+                         digest = record['digest'])
 
 # Cell
-
-def _forced(f, force):
-    """Forced version of memoized function with Memory"""
-    assert hasattr(f, 'call')
-    if not force:
-        return f
-    def result(*args, **kwargs):
-        # Force returns a tuple of result,metadata
-        return f.call(*args, **kwargs)[0]
-    return result
-
 @dataclass
 class WaybackQuery:
     url: str
@@ -235,37 +224,12 @@ class WaybackQuery:
     end: Optional[str]
     status_ok: bool = True
     mime: Optional[Union[str, Iterable[str]]] = None
-    cache_location: Optional[str] = None
-    cache_verbose: int=0
-
-    def __post_init__(self):
-        self.memory = Memory(self.cache_location, verbose=self.cache_verbose)
-        self._query = self.memory.cache(query_wayback_cdx, ignore=['session'])
 
     def query(self,
               limit: Optional[int] = None,
-              session: Optional[Session] = None,
-              force: bool=False) -> Generator[WaybackRecord, None, None]:
-        query = _forced(self._query, force)
-        for r in query(self.url, self.start, self.end, self.status_ok, self.mime, limit, session=session):
-            yield _wayback_cdx_to_record(r, self.cache_location)
-
-# Cell
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
-
-def make_session(pool_maxsize):
-    retry_strategy =  Retry(total=5, backoff_factor=1, status_forcelist=set([504, 500]))
-    adapter = HTTPAdapter(max_retries=retry_strategy, pool_maxsize=pool_maxsize, pool_block=True)
-    session = requests.Session()
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)
-    return session
-
-def wayback_fetch_parallel(items, threads=8, session=None):
-    if session is None:
-        session = make_session(threads)
-    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session) for item in items)
+              session: Optional[Session] = None) -> Generator[WaybackRecord, None, None]:
+        for r in query_wayback_cdx(self.url, self.start, self.end, self.status_ok, self.mime, limit, session=session):
+            yield _wayback_cdx_to_record(r)
 
 # Cell
 from functools import lru_cache
@@ -320,8 +284,8 @@ def jsonl_loads(jsonl):
 
 # Cell
 
-# This makes it much faster for small queries (default is 5)
-CC_PAGE_SIZE = 1
+# Default page size for queries (the underlying default is 5)
+CC_PAGE_SIZE = 5
 
 # Cell
 
@@ -431,47 +395,30 @@ class CommonCrawlRecord:
     length: int
     mime: Optional[str]
     status: Optional[int]
-    cache_location: Optional[Union[str, Path]] = None
+    digest: Optional[str]
 
-    def preview(self, directory=None, filename=None):
-        if directory is None:
-            if self.cache_location is None:
-                raise ValueError("directory or cache_location must be set")
-            directory = self.cache_location
-        directory = Path(directory)
-
-        if filename is None:
-            filename = sha1_digest(self.content) + '.html'
-        path = directory / filename
-        with open(path, 'wb') as f:
+    def preview(self, filename):
+        with open(filename, 'wb') as f:
             f.write(self.content)
-        return FileLink(path)
-
-
+        return FileLink(filename)
 
     @property
     def timestamp_str(self) -> str:
         return self.timestamp.strftime(_CC_TIMESTAMP_FORMAT)
 
-    @property
-    def _get_content(self):
-        memory = Memory(self.cache_location, verbose=0)
-        query = memory.cache(fetch_cc, ignore=['session'])
-        return query
-
     def get_content(self, session=None) -> Optional[bytes]:
-        return self._get_content(self.filename, self.offset, self.length, session=session)
+        return fetch_cc(self.filename, self.offset, self.length, session=session)
 
     @property
     def content(self):
         return self.get_content()
 
     @classmethod
-    def from_dict(cls, record: dict, cache_location:  Optional[Union[str, Path]] = None):
-        return _cc_cdx_to_record(record, cache_location)
+    def from_dict(cls, record: dict):
+        return _cc_cdx_to_record(record)
 
 _WAYBACK_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
-def _cc_cdx_to_record(record: dict, cache_location: Optional[Union[str, Path]] = None) -> WaybackRecord:
+def _cc_cdx_to_record(record: dict) -> WaybackRecord:
     return CommonCrawlRecord(url = record['url'],
                          timestamp = datetime.strptime(record['timestamp'], _WAYBACK_TIMESTAMP_FORMAT),
                              filename=record['filename'],
@@ -479,13 +426,9 @@ def _cc_cdx_to_record(record: dict, cache_location: Optional[Union[str, Path]] =
                              length=record['length'],
                          mime = record.get('mime'),
                          status = None if record.get('status', '-') == '-' else int(record['status']),
-                         cache_location = cache_location)
+                         digest = record.get('digest'))
 
 # Cell
-from joblib import delayed, Memory, Parallel
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
-
 import logging
 
 
@@ -498,13 +441,6 @@ class CommonCrawlQuery:
     apis: Optional[list[str]] = None
     status_ok: bool = True
     mime: Optional[Union[str, Iterable[str]]] = None
-    cache_location: Optional[str] = None
-    cache_verbose:int=0
-
-    def __post_init__(self):
-        self.memory = Memory(self.cache_location, verbose=self.cache_verbose)
-        self._query_pages = self.memory.cache(query_cc_cdx_num_pages, ignore=['session'])
-        self._query = self.memory.cache(query_cc_cdx_page, ignore=['session'])
 
     @property
     def cdx_apis(self) -> Dict[str, str]:
@@ -516,20 +452,16 @@ class CommonCrawlQuery:
 
         return {x['id']: x['cdx-api'] for x in all_apis if x['id'] in apis}
 
-    def query(self, page_size=CC_PAGE_SIZE, force=False, session=None) -> Generator[CommonCrawlRecord, None, None]:
-        query = _forced(self._query, force)
-        query_pages = _forced(self._query_pages, force)
-
+    def query(self, page_size=CC_PAGE_SIZE, session=None) -> Generator[CommonCrawlRecord, None, None]:
         for api_id, api in self.cdx_apis.items():
-
-            num_pages = query_pages(api, self.url, page_size=page_size, session=session)
+            num_pages = query_cc_cdx_num_pages(api, self.url, page_size=page_size, session=session)
 
             for page in range(num_pages):
                 if api_id not in CC_API_FILTER_BLACKLIST:
-                    results_page = query(api, self.url, page, page_size=page_size, status_ok=self.status_ok, mime=self.mime, session=session)
+                    results_page = query_cc_cdx_page(api, self.url, page, page_size=page_size, status_ok=self.status_ok, mime=self.mime, session=session)
                 else:
                     # Deal with missing Status OK and Mime
-                    results_page = query(api, self.url, page, page_size=page_size, status_ok=False, session=session)
+                    results_page = query_cc_cdx_page(api, self.url, page, page_size=page_size, status_ok=False, mime=None, session=session)
 
                 for result in results_page:
-                    yield _cc_cdx_to_record(result, self.cache_location)
+                    yield _cc_cdx_to_record(result)
