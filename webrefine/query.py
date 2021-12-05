@@ -48,6 +48,11 @@ class WarcFileRecord:
             record = next(warcio.ArchiveIterator(f))
             return record.content_stream().read()
 
+    def preview(self, filename):
+        with open(filename, 'wb') as f:
+            f.write(self.content)
+        return FileLink(filename)
+
     @property
     def content(self):
         return self.get_content()
@@ -63,7 +68,7 @@ def get_warc_mime(record: ArcWarcRecord) -> str:
     return record.http_headers.get_header('Content-Type').split(';')[0]
 
 def get_warc_status(record: ArcWarcRecord) -> int:
-    return record.http_headers.get_statuscode()
+    return int(record.http_headers.get_statuscode())
 
 def get_warc_digest(record: ArcWarcRecord) -> str:
     digest = record.rec_headers.get_header('WARC-Payload-Digest')

@@ -30,12 +30,14 @@ index = {"WarcFileRecord": "01_query.ipynb",
          "CC_DATA_URL": "01_query.ipynb",
          "CommonCrawlRecord": "01_query.ipynb",
          "CommonCrawlQuery": "01_query.ipynb",
+         "ProcessMemory": "02_runners.ipynb",
          "sha1_digest": "03_util.ipynb",
          "URL": "03_util.ipynb",
          "make_session": "03_util.ipynb"}
 
 modules = ["core.py",
            "query.py",
+           "runners.py",
            "util.py"]
 
 doc_url = "https://EdwardJRoss.github.io/webrefine/"
