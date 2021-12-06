@@ -7,9 +7,9 @@ from __future__ import annotations # For Python <3.9
 __all__ = ['WarcFileRecord', 'get_warc_url', 'get_warc_timestamp', 'get_warc_mime', 'get_warc_status',
            'get_warc_digest', 'WarcFileQuery', 'header_and_rows_to_dict', 'mimetypes_to_regex', 'query_wayback_cdx',
            'IA_CDX_URL', 'CaptureIndexRecord', 'wayback_url', 'fetch_wayback_content', 'WaybackRecord', 'WaybackQuery',
-           'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads', 'CC_PAGE_SIZE',
-           'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc', 'CC_DATA_URL',
-           'CommonCrawlRecord', 'CommonCrawlQuery']
+           'wayback_fetch_parallel', 'get_cc_indexes', 'parse_cc_crawl_date', 'cc_index_by_time', 'jsonl_loads',
+           'CC_PAGE_SIZE', 'query_cc_cdx_num_pages', 'query_cc_cdx_page', 'CC_API_FILTER_BLACKLIST', 'fetch_cc',
+           'CC_DATA_URL', 'CommonCrawlRecord', 'CommonCrawlQuery', 'cc_fetch_parallel']
 
 # Cell
 # Typing
@@ -56,6 +56,11 @@ class WarcFileRecord:
     @property
     def content(self):
         return self.get_content()
+
+    # Potential improvement is to keep the file open across records
+    @staticmethod
+    def fetch_parallel(records):
+        return [r.content for r in records]
 
 def get_warc_url(record: ArcWarcRecord) -> str:
     return record.rec_headers.get_header('WARC-Target-URI')
@@ -187,6 +192,8 @@ def fetch_wayback_content(timestamp: str, url: str,
 
 # Cell
 
+_WAYBACK_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
+
 @dataclass(frozen=True)
 class WaybackRecord:
     url: str
@@ -213,7 +220,7 @@ class WaybackRecord:
     def from_dict(cls, record: dict):
         return _wayback_cdx_to_record(record)
 
-_WAYBACK_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
+
 def _wayback_cdx_to_record(record: dict) -> WaybackRecord:
     return WaybackRecord(url = record['original'],
                          timestamp = datetime.strptime(record['timestamp'], _WAYBACK_TIMESTAMP_FORMAT),
@@ -235,6 +242,17 @@ class WaybackQuery:
               session: Optional[Session] = None) -> Generator[WaybackRecord, None, None]:
         for r in query_wayback_cdx(self.url, self.start, self.end, self.status_ok, self.mime, limit, session=session):
             yield _wayback_cdx_to_record(r)
+
+# Cell
+
+from joblib import delayed, Parallel
+
+def wayback_fetch_parallel(items, threads=8, session=None):
+    if session is None:
+        session = make_session(threads)
+    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session) for item in items)
+
+WaybackRecord.fetch_parallel = wayback_fetch_parallel
 
 # Cell
 from functools import lru_cache
@@ -411,7 +429,7 @@ class CommonCrawlRecord:
     def timestamp_str(self) -> str:
         return self.timestamp.strftime(_CC_TIMESTAMP_FORMAT)
 
-    def get_content(self, session=None) -> Optional[bytes]:
+    def get_content(self, session=None, callback=None) -> Optional[bytes]:
         return fetch_cc(self.filename, self.offset, self.length, session=session)
 
     @property
@@ -422,16 +440,17 @@ class CommonCrawlRecord:
     def from_dict(cls, record: dict):
         return _cc_cdx_to_record(record)
 
-_WAYBACK_TIMESTAMP_FORMAT = '%Y%m%d%H%M%S'
-def _cc_cdx_to_record(record: dict) -> WaybackRecord:
-    return CommonCrawlRecord(url = record['url'],
-                         timestamp = datetime.strptime(record['timestamp'], _WAYBACK_TIMESTAMP_FORMAT),
-                             filename=record['filename'],
-                             offset=record['offset'],
-                             length=record['length'],
-                         mime = record.get('mime'),
-                         status = None if record.get('status', '-') == '-' else int(record['status']),
-                         digest = record.get('digest'))
+
+def _cc_cdx_to_record(record: dict) -> CommonCrawlRecord:
+    return CommonCrawlRecord(
+         url = record['url'],
+         timestamp = datetime.strptime(record['timestamp'], _CC_TIMESTAMP_FORMAT),
+         offset=record['offset'],
+         length=record['length'],
+         filename=record['filename'],
+         mime = record.get('mime'),
+         status = None if record.get('status', '-') == '-' else int(record['status']),
+         digest = record.get('digest'))
 
 # Cell
 import logging
@@ -470,3 +489,14 @@ class CommonCrawlQuery:
 
                 for result in results_page:
                     yield _cc_cdx_to_record(result)
+
+# Cell
+from joblib import delayed, Parallel
+
+
+def cc_fetch_parallel(items, threads=64, session=None, callback=None):
+    if session is None:
+        session = make_session(threads)
+    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session) for item in items)
+
+CommonCrawlRecord.fetch_parallel = wayback_fetch_parallel

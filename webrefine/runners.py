@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 
-__all__ = ['ProcessMemory']
+__all__ = ['Process', 'RunnerMemory', 'RunnerCached']
 
 # Cell
 #nbdev_comment from __future__ import annotations
@@ -18,19 +18,25 @@ import logging
 from tqdm.auto import tqdm
 
 @dataclass
-class ProcessMemory:
+class Process:
     queries: list[Callable]
     steps: list[Callable]
     filter: Callable
-    progress_bar: bool = True
+
+# Cell
+
+class RunnerMemory():
+    def __init__(self, process: Process, progress_bar: bool = True):
+        self.process = process
+        self.progress_bar = progress_bar
 
     def query(self):
-        for query in tqdm(self.queries, desc='query', disable=not self.progress_bar):
+        for query in tqdm(self.process.queries, desc='query', disable=not self.progress_bar):
             for record in query.query():
                 yield record
 
     def prepare(self, records):
-        return self.filter(tqdm(records, desc='filter', disable=not self.progress_bar))
+        return self.process.filter(tqdm(records, desc='filter', disable=not self.progress_bar))
 
     def fetch(self, records):
         for record in tqdm(records, desc='fetch', disable=not self.progress_bar):
@@ -39,7 +45,70 @@ class ProcessMemory:
     def transform(self, content_records):
         for content, record in tqdm(content_records, desc='transform', disable=not self.progress_bar):
             error = False
-            for step in self.steps:
+            for step in self.process.steps:
+                try:
+                    content = step(content, record)
+                except Exception as e:
+                    error = True
+                    logging.error('Error processing %s at step %s: %s' % (record, step.__name__, e))
+                    break
+            if not error:
+                yield content
+
+    def run(self):
+        records = self.prepare(self.query())
+        content_records = self.fetch(records)
+        return self.transform(content_records)
+
+# Cell
+import itertools
+from pathlib import Path
+from sqlitedict import SqliteDict
+
+class RunnerCached():
+    def __init__(self, process: Process, path: Union[str, Path], progress_bar: bool = True):
+        self.process = process
+        self.progress_bar = progress_bar
+
+        self.path = Path(path)
+
+        self._query = SqliteDict(path, tablename='query', autocommit=True)
+        self._fetch = SqliteDict(path, tablename='fetch', autocommit=False)
+
+    def query(self):
+        # TODO: Don't cache WaybackQuery or FileQuery
+        for query in tqdm(self.process.queries, desc='query', disable=not self.progress_bar):
+            key = repr(query)
+            if key not in self._query:
+                self._query[key] = list(query.query())
+
+        # TODO: Merge
+        for query in self.process.queries:
+            for record in self._query[key]:
+                yield record
+
+    def prepare(self, records):
+        return self.process.filter(tqdm(records, desc='filter', disable=not self.progress_bar))
+
+    def fetch(self, records):
+        records = list(records)
+        unfetched_records = [r for r in records if r.digest not in self._fetch]
+
+        for cls, record_group in itertools.groupby(unfetched_records, key=type):
+            record_group = list(record_group)
+            for content, record in zip(cls.fetch_parallel(record_group), record_group):
+                assert record.digest is not None
+                self._fetch[record.digest] = content
+            self._fetch.commit()
+
+        for record in records:
+            yield (self._fetch[record.digest], record)
+
+
+    def transform(self, content_records):
+        for content, record in tqdm(content_records, desc='transform', disable=not self.progress_bar):
+            error = False
+            for step in self.process.steps:
                 try:
                     content = step(content, record)
                 except Exception as e:
