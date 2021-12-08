@@ -123,6 +123,13 @@ nb_path: "nbs/02_runners.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Minibatch : too small leads to time overhead on setting up connections, too large can lead to memory issues.</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -134,7 +141,79 @@ nb_path: "nbs/02_runners.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="RunnerCached" class="doc_header"><code>class</code> <code>RunnerCached</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/runners.py#L68" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>RunnerCached</code>(<strong><code>process</code></strong>:<a href="/webrefine/runners.html#Process"><code>Process</code></a>, <strong><code>path</code></strong>:<code>Union[str, Path]</code>, <strong><code>progress_bar</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
+<h4 id="minibatch" class="doc_header"><code>minibatch</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/runners.py#L68" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>minibatch</code>(<strong><code>seq</code></strong>, <strong><code>size</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="compress_encode" class="doc_header"><code>compress_encode</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/runners.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>compress_encode</code>(<strong><code>obj</code></strong>:<code>bytes</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="compress_decode" class="doc_header"><code>compress_decode</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/runners.py#L81" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>compress_decode</code>(<strong><code>obj</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="RunnerCached" class="doc_header"><code>class</code> <code>RunnerCached</code><a href="https://github.com/EdwardJRoss/webrefine/tree/master/webrefine/runners.py#L84" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>RunnerCached</code>(<strong><code>process</code></strong>:<a href="/webrefine/runners.html#Process"><code>Process</code></a>, <strong><code>path</code></strong>:<code>Union[str, Path]</code>, <strong><code>progress_bar</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>batch_size</code></strong>:<code>int</code>=<em><code>1024</code></em>)</p>
 </blockquote>
 
 </div>
@@ -386,6 +465,10 @@ ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/tags/da
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="n">test_cache_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./test_skeptric_cache.sqlite&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">test_cache_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">test_cache_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
 <span class="n">data_cached</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">RunnerCached</span><span class="p">(</span><span class="n">skeptric_process</span><span class="p">,</span> <span class="n">test_cache_path</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
 </pre></div>
 
@@ -408,8 +491,8 @@ ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/tags/da
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 716 ms, sys: 33 ms, total: 749 ms
-Wall time: 732 ms
+<pre>CPU times: user 794 ms, sys: 12.6 ms, total: 807 ms
+Wall time: 799 ms
 </pre>
 </div>
 </div>
@@ -428,6 +511,103 @@ Wall time: 732 ms
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">data_cached</span> <span class="o">==</span> <span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">data_cached</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">RunnerCached</span><span class="p">(</span><span class="n">skeptric_process</span><span class="p">,</span> <span class="n">test_cache_path</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 36), mime=&#39;text/html&#39;, status=200, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=17122, digest=&#39;JJVB3MQERHRZJCHOJNKS5VDOODXPZAV2&#39;) at step skeptric_verify_extract: Missing title
+ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/tags/data/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;text/html&#39;, status=200, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=130269, digest=&#39;R7CLAACFU5L7T5LKI5G53RZSMCNUNV6F&#39;) at step skeptric_verify_extract: Missing title
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">test_cache_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./test_skeptric_cache.sqlite&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">test_cache_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">test_cache_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+<span class="n">data_cached_small_batch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">RunnerCached</span><span class="p">(</span><span class="n">skeptric_process</span><span class="p">,</span> <span class="n">test_cache_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 36), mime=&#39;text/html&#39;, status=200, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=17122, digest=&#39;JJVB3MQERHRZJCHOJNKS5VDOODXPZAV2&#39;) at step skeptric_verify_extract: Missing title
+ERROR:root:Error processing WarcFileRecord(url=&#39;https://skeptric.com/tags/data/&#39;, timestamp=datetime.datetime(2021, 11, 26, 11, 28, 38), mime=&#39;text/html&#39;, status=200, path=PosixPath(&#39;../resources/test/skeptric.warc.gz&#39;), offset=130269, digest=&#39;R7CLAACFU5L7T5LKI5G53RZSMCNUNV6F&#39;) at step skeptric_verify_extract: Missing title
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 777 ms, sys: 27.7 ms, total: 805 ms
+Wall time: 788 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">data_cached</span> <span class="o">==</span> <span class="n">data_cached_small_batch</span>
 </pre></div>
 
     </div>
@@ -486,24 +666,6 @@ Wall time: 732 ms
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">test_cache_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-    <span class="n">test_cache_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">time</span> data_all = list(RunnerCached(skeptric_process_all, test_cache_path).run())
 <span class="nb">len</span><span class="p">(</span><span class="n">data_all</span><span class="p">)</span>
 </pre></div>
@@ -518,8 +680,8 @@ Wall time: 732 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 20.2 s, sys: 1.44 s, total: 21.6 s
-Wall time: 1min 2s
+<pre>CPU times: user 20.3 s, sys: 1.41 s, total: 21.7 s
+Wall time: 1min 13s
 </pre>
 </div>
 </div>
@@ -569,7 +731,7 @@ Wall time: 1min 2s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>5.3046875</pre>
+<pre>1.828125</pre>
 </div>
 
 </div>
@@ -608,8 +770,8 @@ Wall time: 1min 2s
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 10.4 s, sys: 342 ms, total: 10.7 s
-Wall time: 10.6 s
+<pre>CPU times: user 9.69 s, sys: 294 ms, total: 9.99 s
+Wall time: 9.86 s
 </pre>
 </div>
 </div>

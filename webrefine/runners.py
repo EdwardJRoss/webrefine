@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 
-__all__ = ['Process', 'RunnerMemory', 'RunnerCached']
+__all__ = ['Process', 'RunnerMemory', 'minibatch', 'compress_encode', 'compress_decode', 'RunnerCached']
 
 # Cell
 #nbdev_comment from __future__ import annotations
@@ -65,15 +65,32 @@ import itertools
 from pathlib import Path
 from sqlitedict import SqliteDict
 
+def minibatch(seq, size):
+    items = []
+    for x in seq:
+        items.append(x)
+        if len(items) >= size:
+            yield items
+            items = []
+    if items:
+        yield items
+
+import zlib, pickle, sqlite3
+def compress_encode(obj: bytes):
+     return sqlite3.Binary(zlib.compress(obj))
+def compress_decode(obj):
+     return zlib.decompress(bytes(obj))
+
 class RunnerCached():
-    def __init__(self, process: Process, path: Union[str, Path], progress_bar: bool = True):
+    def __init__(self, process: Process, path: Union[str, Path], progress_bar: bool = True, batch_size: int = 1024):
         self.process = process
         self.progress_bar = progress_bar
+        self.batch_size = batch_size
 
         self.path = Path(path)
 
         self._query = SqliteDict(path, tablename='query', autocommit=True)
-        self._fetch = SqliteDict(path, tablename='fetch', autocommit=False)
+        self._fetch = SqliteDict(path, tablename='fetch', autocommit=False, encode=compress_encode, decode=compress_decode)
 
     def query(self):
         # TODO: Don't cache WaybackQuery or FileQuery
@@ -92,15 +109,18 @@ class RunnerCached():
 
     def fetch(self, records):
         records = list(records)
-        unfetched_records = [r for r in records if r.digest not in self._fetch]
+        unfetched_records = sorted([r for r in records if r.digest not in self._fetch], key=lambda x: str(type(x)))
 
         with tqdm(total=len(unfetched_records), desc='fetch') as pbar:
             for cls, record_group in itertools.groupby(unfetched_records, key=type):
-                record_group = list(record_group)
-                for content, record in zip(cls.fetch_parallel(record_group, callback=lambda r, c: pbar.update(1)), record_group):
-                    assert record.digest is not None
-                    self._fetch[record.digest] = content
-                self._fetch.commit()
+                for record_group_batch in minibatch(record_group, self.batch_size):
+                    record_group_batch = list(record_group_batch)
+                    for content, record in zip(cls.fetch_parallel(record_group_batch,
+                                                                  callback=lambda r, c: pbar.update(1)),
+                                               record_group_batch):
+                        assert record.digest is not None
+                        self._fetch[record.digest] = content
+                    self._fetch.commit()
 
         for record in records:
             yield (self._fetch[record.digest], record)
