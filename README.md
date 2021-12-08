@@ -215,8 +215,8 @@ data = list(RunnerMemory(skeptric_process).run())
 data
 ```
 
-    CPU times: user 272 ms, sys: 3.62 ms, total: 276 ms
-    Wall time: 271 ms
+    CPU times: user 290 ms, sys: 14.8 ms, total: 305 ms
+    Wall time: 304 ms
 
 
 
@@ -255,8 +255,8 @@ data = list(RunnerCached(skeptric_process, path=cache_path).run())
 data
 ```
 
-    CPU times: user 242 ms, sys: 11.2 ms, total: 253 ms
-    Wall time: 253 ms
+    CPU times: user 252 ms, sys: 10.7 ms, total: 263 ms
+    Wall time: 286 ms
 
 
 

@@ -94,12 +94,13 @@ class RunnerCached():
         records = list(records)
         unfetched_records = [r for r in records if r.digest not in self._fetch]
 
-        for cls, record_group in itertools.groupby(unfetched_records, key=type):
-            record_group = list(record_group)
-            for content, record in zip(cls.fetch_parallel(record_group), record_group):
-                assert record.digest is not None
-                self._fetch[record.digest] = content
-            self._fetch.commit()
+        with tqdm(total=len(unfetched_records), desc='fetch') as pbar:
+            for cls, record_group in itertools.groupby(unfetched_records, key=type):
+                record_group = list(record_group)
+                for content, record in zip(cls.fetch_parallel(record_group, callback=lambda r, c: pbar.update(1)), record_group):
+                    assert record.digest is not None
+                    self._fetch[record.digest] = content
+                self._fetch.commit()
 
         for record in records:
             yield (self._fetch[record.digest], record)

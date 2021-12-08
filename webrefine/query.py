@@ -59,8 +59,12 @@ class WarcFileRecord:
 
     # Potential improvement is to keep the file open across records
     @staticmethod
-    def fetch_parallel(records):
-        return [r.content for r in records]
+    def fetch_parallel(records, callback=None):
+        for r in records:
+            content = r.content
+            if callback is not None:
+                callback(r, content)
+            yield r.content
 
 def get_warc_url(record: ArcWarcRecord) -> str:
     return record.rec_headers.get_header('WARC-Target-URI')
@@ -209,8 +213,11 @@ class WaybackRecord:
     def timestamp_str(self) -> str:
         return self.timestamp.strftime(_WAYBACK_TIMESTAMP_FORMAT)
 
-    def get_content(self, session=None) -> Optional[bytes]:
-        return fetch_wayback_content(self.timestamp_str, self.url, session=None)
+    def get_content(self, session=None, callback=None) -> Optional[bytes]:
+        result = fetch_wayback_content(self.timestamp_str, self.url, session=None)
+        if callback is not None:
+            callback(self, result)
+        return result
 
     @property
     def content(self):
@@ -247,10 +254,10 @@ class WaybackQuery:
 
 from joblib import delayed, Parallel
 
-def wayback_fetch_parallel(items, threads=8, session=None):
+def wayback_fetch_parallel(items, threads=8, session=None, callback=None):
     if session is None:
         session = make_session(threads)
-    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session) for item in items)
+    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session, callback=callback) for item in items)
 
 WaybackRecord.fetch_parallel = wayback_fetch_parallel
 
@@ -430,7 +437,10 @@ class CommonCrawlRecord:
         return self.timestamp.strftime(_CC_TIMESTAMP_FORMAT)
 
     def get_content(self, session=None, callback=None) -> Optional[bytes]:
-        return fetch_cc(self.filename, self.offset, self.length, session=session)
+        result = fetch_cc(self.filename, self.offset, self.length, session=session)
+        if callback is not None:
+            callback(self, result)
+        return result
 
     @property
     def content(self):
@@ -494,9 +504,9 @@ class CommonCrawlQuery:
 from joblib import delayed, Parallel
 
 
-def cc_fetch_parallel(items, threads=64, session=None, callback=None):
+def cc_fetch_parallel(items, threads=32, session=None, callback=None):
     if session is None:
         session = make_session(threads)
-    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session) for item in items)
+    return Parallel(n_jobs=threads, prefer='threads')(delayed(item.get_content)(session=session, callback=callback) for item in items)
 
-CommonCrawlRecord.fetch_parallel = wayback_fetch_parallel
+CommonCrawlRecord.fetch_parallel = cc_fetch_parallel
