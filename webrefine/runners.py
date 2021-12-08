@@ -109,7 +109,9 @@ class RunnerCached():
 
     def fetch(self, records):
         records = list(records)
-        unfetched_records = sorted([r for r in records if r.digest not in self._fetch], key=lambda x: str(type(x)))
+        fetched = set(self._fetch.keys())
+        unfetched_records = [r for r in records if r.digest not in fetched]
+        unfetched_records = sorted(unfetched_records, key=lambda x: str(type(x)))
 
         with tqdm(total=len(unfetched_records), desc='fetch') as pbar:
             for cls, record_group in itertools.groupby(unfetched_records, key=type):
