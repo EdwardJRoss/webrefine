@@ -13,7 +13,7 @@ entries:
       title: webrefine
       url: core.html
     - output: web,pdf
-      title: Query
+      title: query
       url: query.html
     - output: web,pdf
       title: Process

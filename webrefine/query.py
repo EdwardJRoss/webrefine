@@ -390,7 +390,7 @@ CC_API_FILTER_BLACKLIST = ['CC-MAIN-2015-11', 'CC-MAIN-2015-06']
 from warcio import ArchiveIterator
 from io import BytesIO
 
-CC_DATA_URL = "https://commoncrawl.s3.amazonaws.com/"
+CC_DATA_URL = "https://data.commoncrawl.org/"
 def fetch_cc(filename: str, offset: int, length: int, session: Optional[Session] = None) -> bytes:
     if session is None:
         session = requests

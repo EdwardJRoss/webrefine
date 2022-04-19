@@ -2,7 +2,7 @@
   "webrefine": {
     "Overview": "/",
     "webrefine": "core.html",
-    "Query": "query.html",
+    "query": "query.html",
     "Process": "runners.html",
     "Utility Functions": "util.html"
   }
